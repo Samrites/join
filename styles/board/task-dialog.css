@@ -1,0 +1,305 @@
+/* #region task dialog (detail view)*/
+
+:root {
+  --task-dialog-padding-lr: 40px;
+  --task-dialog-padding-tb: 48px;
+}
+
+.task-dialog {
+  position: fixed;
+  border: none;
+  background-color: white;
+  color: black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+  z-index: 999;
+  overflow-y: hidden;
+  max-width: 525px;
+  width: 90dvw;
+  height: fit-content;
+  max-height: 85dvh;
+  border-radius: 30px;
+  transition:
+    display 0.15s allow-discrete,
+    overlay 0.15s allow-discrete;
+  animation: slideOutCentered 0.15s ease-in forwards;
+}
+
+.content-wrapper-task-dialog {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  max-height: 85dvh;
+  width: 100%;
+}
+
+body:has(.example-dialog[open]),
+body:has(.add-task-dialog[open]) {
+  overflow: hidden;
+}
+
+@keyframes slideInCentered {
+  from {
+    transform: translate(150%, -50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutCentered {
+  from {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  to {
+    transform: translate(150%, -50%);
+    opacity: 0;
+  }
+}
+
+.task-dialog[open] {
+  animation: slideInCentered 0.15s ease-out forwards;
+}
+
+.content-wrapper-task-dialog--detailed {
+  padding: var(--task-dialog-padding-tb) var(--task-dialog-padding-lr);
+}
+
+.dialog-contact-row {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  padding-left: 15px;
+}
+
+.dialog-contacts-container {
+  max-height: 150px;
+  overflow-y: auto;
+  margin-top: 8px;
+}
+
+.dialog-prio-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dialog-prio-row img {
+  width: 17px;
+  height: 12px;
+  object-fit: contain;
+}
+
+.dialog-subtasks-section {
+  margin-top: 24px;
+}
+
+.dialog-subtasks-container {
+  max-height: 150px;
+  overflow-y: auto;
+  margin-top: 8px;
+}
+
+.dialog-subtask-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dialog-subtask-checkbox {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.dialog-subtask-row input[type="checkbox"] {
+  appearance: auto !important;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #2a3647;
+}
+
+.dialog-subtask-row label {
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* #endregion */
+
+/* #region task dialog edit mode */
+
+:root {
+  --task-dialog-edit-padding-tb: 32px;
+}
+
+.content-wrapper-task-dialog--edit {
+  padding: 0px var(--task-dialog-padding-lr);
+}
+
+.task-dialog textarea {
+  margin-bottom: unset;
+}
+
+.content-wrapper-task-dialog--edit .add-task-container,
+.content-wrapper-task-dialog--edit .add-task-prio-btns-container,
+.content-wrapper-task-dialog--edit .select-wrapper,
+.content-wrapper-task-dialog--edit .subtask-container,
+.content-wrapper-task-dialog--edit input,
+.content-wrapper-task-dialog--edit textarea,
+.content-wrapper-task-dialog--edit .custom-select-input,
+.content-wrapper-task-dialog--edit .custom-select {
+  width: 100%;
+}
+
+.add-task-inner-wrapper--edit-task {
+  flex-direction: column;
+}
+
+@media screen and (min-width: 1024px) {
+  .add-task-prio-btns-container--edit-task .prio-btn {
+    font-size: 18px;
+  }
+}
+
+.edit-task-closing-btn-wrapper {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: var(--task-dialog-edit-padding-tb);
+  width: 100%;
+  background-color: white;
+  z-index: 2;
+}
+
+.edit-task-dialog-closing-btn {
+  padding: 8px;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.edit-task-dialog-closing-btn:hover {
+  background-color: #eeeeee;
+}
+
+.edit-task-ok-btn-wrapper {
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  padding: 8px 0 var(--task-dialog-edit-padding-tb) 0;
+  display: flex;
+  justify-content: end;
+  background-color: white;
+  width: 100%;
+}
+
+/* #region dialog scrollbar */
+
+.content-wrapper-task-dialog {
+  --sb-track-color: #ffffff;
+  --sb-thumb-color: #a8a8a8;
+  --sb-size: 16px;
+}
+
+.content-wrapper-task-dialog::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.content-wrapper-task-dialog::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 8px;
+}
+
+.content-wrapper-task-dialog::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 8px;
+  border: 4px solid #ffffff;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .content-wrapper-task-dialog {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
+.content-wrapper-task-dialog * {
+  --sb-track-color: #ffffff;
+  --sb-thumb-color: #a8a8a8;
+  --sb-size: 16px;
+}
+
+.content-wrapper-task-dialog *::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.content-wrapper-task-dialog *::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 8px;
+}
+
+.content-wrapper-task-dialog *::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 8px;
+  border: 4px solid #ffffff;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .content-wrapper-task-dialog * {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
+/* #endregion */
+
+/* #endregion */
+
+/* #region responsive */
+
+@media screen and (max-width: 768px) {
+  :root {
+    --task-dialog-padding-lr: 16px;
+    --task-dialog-padding-tb: 24px;
+    --task-dialog-edit-padding-tb: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --task-dialog-padding-lr: 8px;
+    --task-dialog-padding-tb: 8px;
+    --task-dialog-edit-padding-tb: 8px;
+  }
+
+  .task-dialog {
+    border-radius: 16px;
+    max-width: unset;
+    max-height: 95dvh;
+    width: calc(100dvw - 16px);
+  }
+
+  .content-wrapper-task-dialog {
+    max-height: 95dvh;
+  }
+
+  .content-wrapper-task-dialog--detailed {
+    padding-right: 0px;
+  }
+
+  .content-wrapper-task-dialog {
+    --sb-size: 14px;
+  }
+}
+
+/* #endregion */

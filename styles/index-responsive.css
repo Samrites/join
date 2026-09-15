@@ -1,0 +1,168 @@
+@keyframes splash-color-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes splash-color-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes splash-fly-mobile {
+  to {
+    top: 24px;
+    left: 24px;
+    transform: translate(0, 0);
+    height: 64px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  :root {
+    --padding-lr: 64px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --login-container-width: 400px;
+    --signup-container-width: 400px;
+    --input-width: 100%;
+    --padding-lr: 24px;
+  }
+
+  .button-login {
+    font-size: 16px;
+  }
+
+  .join-logo-blue {
+    height: 100px;
+  }
+
+  .form-container {
+    padding: 32px 16px;
+    position: unset;
+    transform: translate(0, 0);
+  }
+
+  .button-login {
+    width: 180px;
+  }
+
+  .form-btn-section {
+    flex-direction: column;
+    gap: 16px;
+    border-radius: var(--border-radius-l);
+  }
+
+  .login-nav {
+    margin-bottom: 32px;
+  }
+
+  .login-nav--desktop {
+    display: none;
+  }
+
+  .login-nav--mobile {
+    display: flex;
+    margin-bottom: 48px;
+  }
+
+  .splash-overlay {
+    background-color: var(--dark-blue);
+  }
+
+  .splash-logo-white {
+    opacity: 1;
+  }
+
+  .splash-logo-blue {
+    opacity: 0;
+  }
+
+  .splash-overlay.splash-active {
+    animation-delay: 0.9s;
+  }
+
+  .splash-overlay.splash-active .splash-logo-white {
+    animation: splash-color-out 0.4s ease-out forwards;
+    animation-delay: 0.9s;
+  }
+
+  .splash-overlay.splash-active .splash-logo-blue {
+    animation: splash-color-in 0.4s ease-out forwards;
+    animation-delay: 0.9s;
+  }
+
+  .splash-overlay.splash-active .splash-logo {
+    animation: splash-fly-mobile 0.8s ease-in-out forwards;
+    animation-delay: 0.9s;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .join-logo-blue {
+    height: 64px;
+  }
+
+  .signup-container {
+    padding: 24px;
+  }
+
+  .input-wrapper input {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --padding-lr: 16px;
+  }
+
+  .form-container {
+    width: 100%;
+    padding: 8px 8px;
+  }
+
+  .signup-container {
+    padding: 16px 8px;
+    gap: 26px;
+  }
+
+  header {
+    padding: 16px var(--padding-lr) 8px var(--padding-lr);
+  }
+
+  footer {
+    margin: 8px var(--padding-lr) 16px var(--padding-lr);
+  }
+
+  .accept-privacy-container p,
+  span {
+    text-align: center;
+  }
+
+  .accept-privacy-container .error-msg {
+    text-align: center;
+  }
+
+  .accept-privacy-container {
+    margin: 8px 0px;
+  }
+
+  .login-nav--mobile {
+    margin-bottom: 24px;
+  }
+
+  .input-fields-signup {
+    gap: 24px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  :root {
+    --padding-lr: 8px;
+  }
+}

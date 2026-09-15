@@ -1,0 +1,22 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "tasks": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "contacts": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "categories": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "issueCollectorUsage": {
+      ".read": false,
+      ".write": false
+    }
+  }
+}

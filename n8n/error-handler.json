@@ -1,0 +1,48 @@
+{
+  "name": "Join - Issue Collector Error Handler",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "error-trigger",
+      "name": "Issue workflow failed",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [0, 240]
+    },
+    {
+      "parameters": {
+        "jsCode": "/** Recover the sender from the failed execution when available. */\nconst execution = $input.first().json.execution || {};\nconst data = execution.data || {};\nconst senderEmail = data.senderEmail || data.resultData?.runData?.['Normalize email']?.[0]?.data?.main?.[0]?.[0]?.json?.senderEmail || '';\nreturn [{ json: { senderEmail, executionId: execution.id || '', error: execution.error?.message || 'Unknown processing error' } }];"
+      },
+      "id": "recover-context",
+      "name": "Recover sender context",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [240, 240]
+    },
+    {
+      "parameters": { "conditions": { "string": [{ "value1": "={{$json.senderEmail}}", "operation": "isNotEmpty" }] } },
+      "id": "has-email",
+      "name": "Sender available?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [480, 240]
+    },
+    {
+      "parameters": { "fromEmail": "={{$env.ISSUE_COLLECTOR_EMAIL}}", "toEmail": "={{$json.senderEmail}}", "subject": "We received your Join request", "emailFormat": "text", "text": "We received your email, but automatic processing failed. The team will review it manually and get back to you.", "options": {} },
+      "id": "failure-email",
+      "name": "Send failure notice",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [740, 160],
+      "credentials": { "smtp": { "id": "SELECT_IN_N8N", "name": "Join Issue Collector SMTP" } }
+    }
+  ],
+  "connections": {
+    "Issue workflow failed": { "main": [[{ "node": "Recover sender context", "type": "main", "index": 0 }]] },
+    "Recover sender context": { "main": [[{ "node": "Sender available?", "type": "main", "index": 0 }]] },
+    "Sender available?": { "main": [[{ "node": "Send failure notice", "type": "main", "index": 0 }], []] }
+  },
+  "settings": { "executionOrder": "v1", "timezone": "Europe/Zurich" },
+  "active": false,
+  "versionId": "00000000-0000-4000-8000-000000000003"
+}

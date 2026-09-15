@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create request | Join</title>
+  <link rel="icon" href="../assets/icons/join-logo-blue.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../styles/fonts.css" />
+  <link rel="stylesheet" href="../styles/stakeholder.css" />
+  <script src="../scripts/stakeholder.js" defer></script>
+</head>
+<body>
+  <header class="stakeholder-header">
+    <a href="../index.html" aria-label="Join home"><img src="../assets/icons/join-logo-blue.svg" alt="Join" /></a>
+  </header>
+  <main>
+    <div class="request-topbar">
+      <a class="back-link" href="../index.html" aria-label="Back to Welcome">&#8592;</a>
+      <p id="limit-status" aria-live="polite"><strong>0</strong> of <strong>10</strong> requests used today</p>
+    </div>
+    <h1>Welcome</h1>
+    <section class="request-content" aria-label="Create an email request">
+      <h2>Easily create a ticket by sending an email — no extra steps needed.</h2>
+      <img class="request-illustration" src="../assets/imgs/figma-request-board.png" alt="A person preparing a request next to a Kanban board" />
+      <div class="request-copy">
+        <p>On this platform, you can submit your feature requests via email. Our AI system will automatically generate a ticket with a deadline and priority level.</p>
+        <p>A total of 10 requests can be created per day. After this limit, emails can still be sent, but they will be manually reviewed by our team instead of generating AI tickets.</p>
+        <a id="request-email-link" class="primary-action" href="mailto:join.issue.collector2026@gmail.com?subject=Join%20Feature%20Request"><span class="desktop-action-label">Create Email Request</span><span class="mobile-action-label">Create request</span><span class="action-check" aria-hidden="true">✓</span></a>
+        <p id="limit-copy" class="status-note" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+  <footer><a href="privacy-policy-external.html">Privacy Policy</a><a href="legal-notice-external.html">Legal notice</a></footer>
+</body>
+</html>

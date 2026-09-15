@@ -1,0 +1,265 @@
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #2a3647;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  transition: all 0.1s ease-in-out;
+}
+
+.custom-checkbox.checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.task-dialog {
+  word-break: break-word;
+}
+
+.task-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.task-dialog-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+}
+
+.ai-ticket-marker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #6c52ff;
+  font-size: 20px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.ai-generated-notice {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid #cfc1ff;
+  border-radius: 10px;
+  background: #f6f2ff;
+  color: #45258f;
+  font-size: 16px;
+}
+
+.dialog-creator {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.creator-type {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #e8eef5;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.creator-type--external {
+  background: #d9ff43;
+  color: #177da8;
+  border-radius: 4px;
+}
+
+.creator-type--external::before {
+  content: "◉";
+  margin-right: 4px;
+  color: #177da8;
+}
+
+.creator-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  color: #42526e;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.creator-email img { width: 24px; height: 24px; }
+
+.category-field-dialog {
+  background-color: #0038ff;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font: "Inter", sans-serif;
+  font-size: 20px;
+  width: fit-content;
+}
+
+.close-task-dialog-btn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.close-task-dialog-btn img {
+  width: 65%;
+  height: 65%;
+  object-fit: contain;
+}
+
+.close-task-dialog-btn:hover {
+  background-color: #ebe8e8;
+  border-radius: 50px;
+}
+
+.dialog-task-title {
+  font-size: 61px;
+  line-height: 1.2;
+  font-family: "Inter", sans-serif;
+  margin: 32px 0 0;
+}
+
+.dialog-description {
+  margin: 24px 0 0;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #000000;
+}
+
+.dialog-prio-date {
+  margin-top: 15px;
+  gap: 15px;
+  font-size: 18px;
+}
+
+.dialog-prio-row {
+  display: flex;
+  margin-top: 15px;
+  align-items: center;
+}
+
+.dialog-text-label {
+  color: #576174;
+  font-size: 18px;
+}
+
+.dialog-assigned-section {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.dialog-footer {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.dialog-footer-hr {
+  height: 30px;
+  border: 1px solid #d1d1d1;
+}
+
+.delete-task-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  height: 27px;
+  gap: 5px;
+  background-color: white;
+}
+
+.edit-task-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  height: 27px;
+  gap: 5px;
+  background-color: white;
+}
+
+.task-dialog-btn {
+  display: flex;
+  gap: 8px;
+  color: var(--dark-blue);
+}
+
+.task-dialog-btn:hover {
+  color: var(--light-blue);
+  font-weight: 700;
+}
+
+.task-dialog-btn:hover svg path {
+  fill: var(--light-blue);
+}
+
+.dialog-subtask-row input[type="checkbox"] {
+  display: none;
+}
+
+.custom-subtask-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 16px;
+  color: #000000;
+}
+
+.custom-subtask-checkbox img {
+  width: 17px;
+  height: 17px;
+}
+
+.custom-subtask-checkbox .cb-checked {
+  display: none;
+  height: 22px;
+  width: 22px;
+}
+
+.custom-subtask-checkbox .cb-empty {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  padding: 2.5px;
+}
+
+.dialog-subtask-row
+  input[type="checkbox"]:checked
+  + .custom-subtask-checkbox
+  .cb-empty {
+  display: none;
+}
+
+.dialog-subtask-row
+  input[type="checkbox"]:checked
+  + .custom-subtask-checkbox
+  .cb-checked {
+  display: inline-block;
+}

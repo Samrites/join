@@ -1,0 +1,7 @@
+.env
+.env.*
+!.env.example
+credentials/
+*.pem
+*.key
+n8n-data/

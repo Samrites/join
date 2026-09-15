@@ -1,0 +1,58 @@
+{
+  "name": "Join - External Creator Status Notification",
+  "nodes": [
+    {
+      "parameters": { "httpMethod": "POST", "path": "join-ticket-status", "responseMode": "onReceived", "options": {} },
+      "id": "status-webhook",
+      "name": "Status webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 240],
+      "webhookId": "join-ticket-status"
+    },
+    {
+      "parameters": {
+        "jsCode": "/** Allow only Firebase-style task IDs and known board lanes. */\nconst body = $input.first().json.body || $input.first().json;\nconst lanes = ['triage', 'to do', 'in progress', 'await feedback', 'done'];\nconst taskId = String(body.taskId || '');\nif (!/^[A-Za-z0-9_-]{1,80}$/.test(taskId)) throw new Error('Invalid task ID');\nif (!lanes.includes(body.previousColumn) || !lanes.includes(body.column)) throw new Error('Invalid lane transition');\nreturn [{ json: { taskId, previousColumn: body.previousColumn, column: body.column } }];"
+      },
+      "id": "validate",
+      "name": "Validate transition",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [240, 240]
+    },
+    {
+      "parameters": { "url": "={{$env.FIREBASE_DATABASE_URL}}/tasks/{{$json.taskId}}.json", "options": {} },
+      "id": "load-task",
+      "name": "Load trusted task",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 240]
+    },
+    {
+      "parameters": { "conditions": { "string": [{ "value1": "={{$json.creator.type}}", "operation": "equals", "value2": "external" }, { "value1": "={{$json.creator.email}}", "operation": "isNotEmpty" }] } },
+      "id": "external-only",
+      "name": "External creator?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [720, 240]
+    },
+    {
+      "parameters": { "fromEmail": "={{$env.ISSUE_COLLECTOR_EMAIL}}", "toEmail": "={{$json.creator.email}}", "subject": "={{'Join ticket update: ' + $json.title}}", "emailFormat": "text", "text": "={{'Your ticket “' + $json.title + '” moved from ' + $('Validate transition').item.json.previousColumn + ' to ' + $('Validate transition').item.json.column + '.'}}", "options": {} },
+      "id": "send-update",
+      "name": "Send status update",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [980, 160],
+      "credentials": { "smtp": { "id": "SELECT_IN_N8N", "name": "Join Issue Collector SMTP" } }
+    }
+  ],
+  "connections": {
+    "Status webhook": { "main": [[{ "node": "Validate transition", "type": "main", "index": 0 }]] },
+    "Validate transition": { "main": [[{ "node": "Load trusted task", "type": "main", "index": 0 }]] },
+    "Load trusted task": { "main": [[{ "node": "External creator?", "type": "main", "index": 0 }]] },
+    "External creator?": { "main": [[{ "node": "Send status update", "type": "main", "index": 0 }], []] }
+  },
+  "settings": { "executionOrder": "v1", "timezone": "Europe/Zurich" },
+  "active": false,
+  "versionId": "00000000-0000-4000-8000-000000000002"
+}

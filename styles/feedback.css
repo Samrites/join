@@ -1,0 +1,96 @@
+/* Feedback layout: preserve application data and existing interactions. */
+.summary-page { width: 100%; max-width: 1160px; }
+.summary-body { gap: 48px; flex-wrap: nowrap; }
+.summary-cards { flex: 0 1 560px; min-width: 0; width: 100%; }
+.cards-row-middle { align-items: stretch; }
+.cards-row-middle .metric-card-wide { flex: 2; min-width: 0; gap: 16px; padding: 24px; }
+.cards-row-middle .metric-card-ai { flex: 0.7; min-width: 100px; padding: 20px 12px; }
+.metric-card-ai { background: white; color: #2a3647; }
+.metric-card-ai .card-count {
+  color: transparent;
+  background: linear-gradient(180deg, #8933fc 0%, #29abe2 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.card-urgent-side { flex: 0 0 auto; gap: 12px; }
+.card-deadline { min-width: 0; }
+.deadline-date { font-size: 17px; white-space: normal; }
+.deadline-label { font-size: 16px; }
+.summary-greeting { min-width: 0; }
+.summary-greeting p { font-size: 48px; overflow-wrap: anywhere; }
+.card-info { align-items: center; }
+.metric-card-icon { justify-content: center; padding: 28px 24px; }
+.metric-card-bottom { min-width: 0; min-height: 120px; }
+.card-label { line-height: 1.25; }
+.metric-card { text-decoration: none; }
+.task-titles { gap: 20px; }
+.task-lanes { min-width: 0; max-width: none; }
+.task-title { align-items: center; gap: 8px; }
+.task-title h2 { font-size: 18px; }
+.task-lanes--triage .task-title h2 { color: #42526e; }
+.card-container { margin-top: 20px; align-items: stretch !important; }
+.card { width: 100%; max-width: none; gap: 14px; padding: 16px; }
+.card-descr { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; line-height: 1.35; }
+.card-text { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.card-footer { min-height: 32px; margin-left: 0; }
+.card-footer > img:last-child { margin-left: auto; }
+.card-footer > :last-child { margin-left: auto; }
+.category-field { font-weight: 400; }
+.task-dialog-header { height: auto; gap: 10px; flex-wrap: nowrap; }
+.task-dialog-header { position: relative; padding-right: 28px; }
+.category-field-dialog { font-size: 18px; }
+.ai-ticket-marker { color: #6c52ff; font-size: 20px; display: inline-flex; align-items: center; gap: 8px; }
+.ai-ticket-marker > span { color: #6c52ff; font-size: 24px; }
+.close-task-dialog-btn { position: absolute; right: 0; top: 0; flex-shrink: 0; }
+.dialog-task-title { font-size: 61px; line-height: 1.2; margin-top: 32px; }
+.dialog-description { line-height: 1.2; font-size: 20px; }
+.dialog-creator { margin-top: 24px; font-size: 16px; gap: 8px; }
+.creator-type--external { background: #d9ff43; color: #177da8; }
+.creator-email { display: inline-flex; align-items: center; gap: 4px; color: #42526e; font-size: 16px; margin-left: auto; text-decoration: none; }
+.creator-email img { width: 24px; height: 24px; }
+.dialog-prio-date { margin-top: 0; }
+.content-wrapper-task-dialog--detailed { padding: 40px; }
+.task-dialog:focus-visible, a:focus-visible, button:focus-visible, .card:focus-visible { outline: 3px solid #29abe2; outline-offset: 3px; }
+@media (max-width: 1200px) and (min-width: 1025px) {
+  .summary-body { gap: 24px; }
+  .summary-greeting h2 { font-size: 28px; }
+  .summary-greeting p { font-size: 36px; }
+  .summary-cards { flex-basis: 500px; }
+  .task-titles { gap: 12px; }
+  .card { padding: 12px; }
+  .task-title h2 { font-size: 16px; }
+}
+@media (max-width: 1024px) {
+  .summary-page { max-width: 560px; }
+  .summary-cards { flex: auto; }
+  .summary-body { gap: 0; }
+  .task-lanes { width: 100%; min-width: 0; }
+  .task-titles { gap: 28px; width: 100%; min-width: 0; }
+  .card-container { margin-top: 12px; max-width: 100%; }
+  .card { width: 252px; flex: 0 0 252px; }
+}
+@media (max-width: 600px) {
+  .summary-title { margin-bottom: 32px; }
+  .summary-cards { gap: 16px; }
+  .cards-row { gap: 12px; }
+  .cards-row-middle .metric-card-wide { padding: 14px 10px; gap: 10px; }
+  .cards-row-middle .metric-card-ai { min-width: 76px; padding: 12px 8px; }
+  .card-urgent-side { gap: 6px; }
+  .card-icon-circle { width: 32px; height: 32px; }
+  .card-divider { flex: 0 0 2px; height: 54px; }
+  .deadline-date { font-size: 16px; }
+  .deadline-label { font-size: 16px; }
+  .metric-card-bottom .card-label { font-size: 16px; }
+  .metric-card-bottom { min-height: 96px; }
+  .metric-card-icon { padding: 20px 12px; }
+  .content-wrapper-task-dialog--detailed { padding: 24px; }
+  .dialog-task-title { font-size: 34px; }
+  .dialog-description, .dialog-text-label, .dialog-prio-date { font-size: 16px; }
+  .category-field-dialog { font-size: 16px; }
+  .ai-ticket-marker { font-size: 16px; gap: 3px; }
+  .task-dialog-header { gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .summary-greeting { transition: none; }
+  .metric-card, .task-dialog[open] { animation: none; transition: none; }
+}

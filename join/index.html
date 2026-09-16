@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join - Welcome</title>
+    <link
+      rel="icon"
+      href="./assets/icons/join-logo-white.svg"
+      type="image/svg+xml"
+    />
+
+    <script src="./script.js" defer></script>
+    <script src="./scripts/welcome.js" defer></script>
+
+    <link rel="stylesheet" href="./styles/variables.css" />
+    <link rel="stylesheet" href="./styles/standard.css" />
+    <link rel="stylesheet" href="./styles/fonts.css" />
+    <link rel="stylesheet" href="./styles/assets.css" />
+    <link rel="stylesheet" href="./styles/buttons.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/index-responsive.css" />
+    <link rel="stylesheet" href="./styles/templates.css" />
+    <link rel="stylesheet" href="./styles/templates-responsive.css" />
+    <link rel="stylesheet" href="./styles/welcome.css" />
+  </head>
+  <body class="welcome-mode">
+    <div id="splash-overlay" class="splash-overlay">
+      <div class="splash-logo">
+        <img
+          class="splash-logo-blue"
+          src="./assets/icons/join-logo-blue.svg"
+          alt="Join Logo"
+        />
+        <img
+          class="splash-logo-white"
+          src="./assets/icons/join-logo-white.svg"
+          alt=""
+        />
+      </div>
+    </div>
+    <header>
+      <img
+        class="join-logo-blue"
+        src="./assets/icons/join-logo-blue.svg"
+        alt="logo"
+      />
+      <nav class="login-nav login-nav--desktop">
+        <a class="issue-request-link" href="./html/stakeholder.html">Create request</a>
+        <p class="not-a-user-text" href="#">Not a join user?</p>
+        <a href="./html/signup.html">
+          <button class="button button-blue button-signup-small">
+            Sign up
+          </button>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="welcome-card" aria-labelledby="welcome-title">
+        <h1 id="welcome-title">Welcome</h1>
+        <div class="welcome-underline"></div>
+        <p class="welcome-intro">Pick the option that suits your role: create a request as a stakeholder or log in if you’re part of the team.</p>
+        <div class="welcome-options">
+          <div class="welcome-option">
+            <p><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4"/></svg>Are you a stakeholder?</p>
+            <a class="welcome-button welcome-button-primary" href="./html/stakeholder.html">Create request</a>
+          </div>
+          <div class="welcome-option">
+            <p><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M2 21v-3a7 7 0 0 1 14 0v3zM17 4a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 5"/></svg>Are you a team member?</p>
+            <a class="welcome-button" href="#login">Member log in</a>
+          </div>
+        </div>
+      </section>
+      <form
+        onsubmit="handleLogin(event)"
+        class="form-container login-container"
+        id="login-form"
+        novalidate
+      >
+        <div class="form-headline-container form-headline-container-login">
+          <a class="welcome-back" href="#welcome" aria-label="Back to Welcome">←</a>
+          <div class="headline-wrapper">
+            <h1>Log In</h1>
+            <div class="h1-underline"></div>
+          </div>
+        </div>
+
+        <div
+          class="required required-login-container"
+          id="input-required-container"
+          data-message="Wrong email or password"
+        >
+          <section class="input-fields input-fields-login">
+            <div
+              class="input-wrapper input-wrapper-login-email required"
+              data-message="Please enter your email"
+            >
+              <input
+                aria-label="email adress"
+                placeholder="Email"
+                class="form-input form-input-email"
+                id="login-email"
+                pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+                type="email"
+                oninput="checkInputValidityOnInputLogin('email')"
+                onblur="checkInputValidityOnBlurLogin('email')"
+                required
+              />
+            </div>
+
+            <div
+              class="input-wrapper input-wrapper-login-password required"
+              data-message="Please enter your password"
+            >
+              <div class="input-with-icon">
+                <input
+                  oninput="checkInputValidityOnInputLogin('password')"
+                  onblur="checkInputValidityOnBlurLogin('password')"
+                  aria-label="password"
+                  placeholder="Password"
+                  class="form-input form-input-password"
+                  id="login-password"
+                  pattern="\S+"
+                  minlength="6"
+                  type="password"
+                  required
+                />
+                <button
+                  type="button"
+                  class="password-toggle"
+                  id="toggle-login-password"
+                  aria-label="Show password"
+                  onclick="
+                    togglePassword('login-password', 'toggle-login-password')
+                  "
+                ></button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section class="form-btn-section">
+          <button
+            type="submit"
+            class="button button-login button-blue"
+            id="login-btn"
+          >
+            Log in
+          </button>
+          <button
+            type="button"
+            class="button button-login button-white"
+            onclick="guestLogin()"
+          >
+            Guest Log in
+          </button>
+        </section>
+      </form>
+    </main>
+
+    <footer>
+      <nav class="login-nav login-nav--mobile">
+        <p class="not-a-user-text" href="#">Not a join user?</p>
+        <a href="./html/signup.html">
+          <button class="button button-blue button-signup-small">
+            Sign up
+          </button>
+        </a>
+      </nav>
+
+      <nav class="footer-nav">
+        <a href="./html/privacy-policy-external.html">Privacy Policy</a>
+        <a href="./html/legal-notice-external.html">Legal Notice</a>
+      </nav>
+    </footer>
+  </body>
+</html>

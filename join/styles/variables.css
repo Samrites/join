@@ -1,0 +1,21 @@
+/* colors */
+:root {
+  --dark-blue: #2a3647;
+  --darkest-blue: #091931;
+  --light-blue: #29abe2;
+  --light-gray: #f6f7f8;
+  --gray: #a8a8a8;
+  --light-gray2: #d1d1d1;
+  --light-orange: #ffa800;
+  --red-invalid: rgba(230, 0, 38, 1);
+}
+
+:root {
+  --border-radius-l: 30px;
+  --border-radius-s: 10px;
+  --border-radius-xs: 8px;
+}
+
+:root {
+  --content-limitation: calc(50% - 960px);
+}

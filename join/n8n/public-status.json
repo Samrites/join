@@ -1,0 +1,46 @@
+{
+  "name": "Join - Public Issue Collector Status",
+  "nodes": [
+    {
+      "parameters": { "httpMethod": "GET", "path": "join-issue-status", "responseMode": "responseNode", "options": {} },
+      "id": "status-request",
+      "name": "Status request",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 240],
+      "webhookId": "join-issue-status"
+    },
+    {
+      "parameters": { "jsCode": "const dayKey = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Zurich' }); return [{ json: { dayKey } }];" },
+      "id": "today",
+      "name": "Calculate day key",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [240, 240]
+    },
+    {
+      "parameters": { "url": "=https://join-ai-issue-collector-default-rtdb.europe-west1.firebasedatabase.app/issueCollectorUsage/{{$json.dayKey}}.json", "options": {} },
+      "id": "usage",
+      "name": "Read usage",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 240]
+    },
+    {
+      "parameters": { "respondWith": "json", "responseBody": "={{ { used: Number($json.count ?? 0), limit: 10, email: 'join.issue.collector2026@gmail.com' } }}", "options": { "responseHeaders": { "entries": [{ "name": "Access-Control-Allow-Origin", "value": "*" }, { "name": "Cache-Control", "value": "no-store" }] } } },
+      "id": "respond",
+      "name": "Return public status",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [720, 240]
+    }
+  ],
+  "connections": {
+    "Status request": { "main": [[{ "node": "Calculate day key", "type": "main", "index": 0 }]] },
+    "Calculate day key": { "main": [[{ "node": "Read usage", "type": "main", "index": 0 }]] },
+    "Read usage": { "main": [[{ "node": "Return public status", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1", "timezone": "Europe/Zurich" },
+  "active": false,
+  "versionId": "00000000-0000-4000-8000-000000000004"
+}

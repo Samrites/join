@@ -1,0 +1,147 @@
+:root {
+  --margin-top-h2: 24px;
+}
+
+.main-content {
+  word-break: break-word;
+  overflow-x: hidden;
+}
+
+.main-content {
+  color: black;
+  line-height: 1.2;
+}
+
+.main-content h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: var(--margin-top-h2);
+}
+
+.main-content p {
+  font-size: 16px;
+}
+
+.main-content p {
+  text-align: justify;
+}
+
+.p-bottom {
+  margin-top: var(--margin-top-h2);
+}
+
+.imprint-ul {
+  margin-left: 20px;
+}
+
+.help-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  margin-top: 48px;
+}
+
+.back-arrow {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: var(--transition-default);
+  background: none;
+  border: none;
+}
+
+.back-arrow:hover {
+  background-color: rgba(41, 171, 226, 0.1);
+}
+
+.back-arrow img {
+  width: 32px;
+  height: auto;
+}
+
+@media screen and (max-width: 1280px) {
+  :root {
+    --margin-top-h2: 26px;
+  }
+
+  .main-content h1 {
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .help-title-row {
+    margin-top: 0;
+  }
+
+  .main-content {
+    margin: var(--header-height) 0 var(--resp-navbar-height) 0;
+    max-width: 100%;
+  }
+
+  .main-content h1 {
+    font-size: 42px;
+  }
+
+  .li-nav-link--privacy-policy-resp {
+    height: 100%;
+    padding: 4px;
+  }
+
+  .li-nav-link--privacy-policy-resp a {
+    height: 100%;
+  }
+
+  .back-arrow {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --margin-top-h2: 16px;
+  }
+
+  .main-content h1 {
+    font-size: 32px;
+  }
+
+  .help-title-row {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --margin-top-h2: 12px;
+  }
+
+  .main-content h1 {
+    font-size: 28px;
+  }
+
+  .main-content h2 {
+    font-size: 20px;
+  }
+
+  .nav-login-item {
+    padding-left: 8px;
+  }
+
+  .nav-link {
+    padding: 8px;
+  }
+
+  .back-arrow img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .help-title-row {
+    margin-bottom: 16px;
+  }
+}

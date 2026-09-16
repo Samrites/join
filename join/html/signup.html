@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link
+      rel="icon"
+      href="../assets/icons/join-logo-white.svg"
+      type="image/svg+xml"
+    />
+
+    <script src="../scripts/signup.js" defer></script>
+
+    <link rel="stylesheet" href="../styles/variables.css" />
+    <link rel="stylesheet" href="../styles/standard.css" />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="stylesheet" href="../styles/assets.css" />
+    <link rel="stylesheet" href="../styles/buttons.css" />
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/index-responsive.css" />
+    <link rel="stylesheet" href="../styles/templates.css" />
+    <link rel="stylesheet" href="../styles/templates-responsive.css" />
+  </head>
+  <body onload="initSignup()">
+    <header>
+      <img
+        class="join-logo-blue"
+        src="../assets/icons/join-logo-blue.svg"
+        alt="logo"
+      />
+    </header>
+
+    <main>
+      <form
+        onsubmit="submitSignupForm(event)"
+        class="form-container signup-container"
+        id="signup-form"
+        novalidate
+      >
+        <div class="form-headline-container form-headline-container-signup">
+          <a href="../index.html" class="blue-arrow-left-btn">
+            <img
+              src="../assets/icons/blue-arrow-left.svg"
+              alt="Back to login"
+            />
+          </a>
+          <div class="headline-wrapper">
+            <h1>Sign up</h1>
+            <div class="h1-underline"></div>
+          </div>
+        </div>
+
+        <section class="input-fields input-fields-signup">
+          <div
+            class="input-wrapper required"
+            data-message="Please enter a name"
+          >
+            <input
+              aria-label="name"
+              oninput="checkInputValidityOnInput('name')"
+              onblur="checkInputValidityOnBlur('name')"
+              class="form-input form-input-name"
+              id="signup-name"
+              placeholder="Name"
+              type="text"
+              pattern=".*\S.*"
+              required
+            />
+          </div>
+
+          <div
+            id="input-wrapper--signup-mail"
+            class="input-wrapper required"
+            data-message="Please enter a valid email"
+          >
+            <input
+              aria-label="email"
+              oninput="checkInputValidityOnInput('email')"
+              onblur="checkInputValidityOnBlur('email')"
+              class="form-input form-input-email"
+              id="signup-email"
+              placeholder="Email"
+              type="email"
+              pattern="[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}"
+              required
+            />
+          </div>
+
+          <div
+            class="input-wrapper required input-with-icon"
+            data-message="Password must be at least 6 characters"
+          >
+            <div class="input-with-icon">
+              <input
+                aria-label="password"
+                oninput="checkInputValidityOnInput('password')"
+                onblur="checkInputValidityOnBlur('password')"
+                class="form-input form-input-password"
+                id="signup-password"
+                placeholder="Password"
+                type="password"
+                required
+                pattern="\S+"
+                minlength="6"
+              />
+              <button
+                type="button"
+                class="password-toggle"
+                id="toggle-password"
+                aria-label="Show password"
+                onclick="togglePassword('signup-password', 'toggle-password')"
+              ></button>
+            </div>
+          </div>
+
+          <div
+            class="input-wrapper required"
+            data-message="Your passwords don't match. Please try again."
+          >
+            <div class="input-with-icon">
+              <input
+                aria-label="confirm password"
+                oninput="checkInputValidityOnInput('confirm-password')"
+                onblur="checkInputValidityOnBlur('confirm-password')"
+                class="form-input form-input-confirm-password"
+                id="signup-confirm-password"
+                placeholder="Confirm Password"
+                type="password"
+                required
+                pattern="\S+"
+                minlength="6"
+              />
+              <button
+                type="button"
+                class="password-toggle"
+                id="toggle-confirm"
+                aria-label="Show password"
+                onclick="
+                  togglePassword('signup-confirm-password', 'toggle-confirm')
+                "
+              ></button>
+            </div>
+          </div>
+        </section>
+
+        <div
+          data-message="Please accept the privacy policy"
+          id="signup-checkbox-container"
+          class="accept-privacy-container required"
+        >
+          <div class="checkbox-container">
+            <input
+              aria-label="accept privacy policy"
+              oninput="checkInputValidityOnInput('privacy-checkbox')"
+              id="signup-privacy-checkbox"
+              class="accept-checkbox"
+              type="checkbox"
+              required
+            />
+          </div>
+          <p>
+            I accept the
+            <a href="../html/privacy-policy-external.html">Privacy Policy</a>
+          </p>
+        </div>
+
+        <button
+          type="submit"
+          class="button button-login button-blue"
+          id="signup-btn"
+        >
+          Sign Up
+        </button>
+      </form>
+    </main>
+
+    <footer>
+      <nav class="footer-nav">
+        <a href="../html/privacy-policy-external.html">Privacy Policy</a>
+        <a href="../html/legal-notice-external.html">Legal Notice</a>
+      </nav>
+    </footer>
+    <div id="success-toast" class="success-toast">
+      You signed up successfully
+    </div>
+  </body>
+</html>

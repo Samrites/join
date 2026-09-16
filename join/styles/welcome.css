@@ -1,0 +1,56 @@
+[hidden] { display: none !important; }
+.welcome-card { width: min(calc(100vw - 48px), 789px); padding: 56px 72px; border-radius: 30px; background: white; color: #2a3647; box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08); }
+.welcome-card h1 { font-family: "Open Sans", sans-serif; font-size: 32px; line-height: 1.2; text-align: center; margin: 0; }
+.welcome-underline { width: 120px; height: 3px; background: #29abe2; margin: 12px auto 56px; }
+.welcome-intro { font-family: "Open Sans", sans-serif; font-size: 23px; line-height: 1.2; margin: 0 0 56px; }
+.welcome-options { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+.welcome-option p { display: flex; gap: 8px; align-items: center; font-family: "Open Sans", sans-serif; font-size: 23px; line-height: 1.2; margin: 0 0 16px; white-space: nowrap; }
+.welcome-option svg { width: 24px; height: 24px; flex-shrink: 0; fill: none; stroke: #177da8; stroke-width: 1.6; }
+.welcome-button { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; min-height: 48px; border: 1px solid #2a3647; border-radius: 8px; color: #2a3647; text-decoration: none; font-family: "Open Sans", sans-serif; font-size: 19px; line-height: 1.2; }
+.welcome-button-primary { color: white; background: #177da8; border-color: #177da8; font-size: 23px; padding: 10px 18px; }
+.welcome-button:hover { box-shadow: 0 4px 8px #0002; }
+a:focus-visible, button:focus-visible { outline: 3px solid #29abe2; outline-offset: 4px; }
+.welcome-back { color: #29abe2; font-size: 30px; position: absolute; left: 24px; }
+.form-headline-container-login { position: relative; }
+.welcome-mode { background: #2a3647; }
+.welcome-mode main { flex: 1; padding: 24px; }
+.welcome-mode #login-form { display: none; }
+.welcome-mode header { min-height: 140px; }
+.welcome-mode header .join-logo-blue { visibility: visible; content: url('../assets/icons/join-logo-white.svg'); }
+.welcome-mode header .login-nav { visibility: hidden; }
+.welcome-mode .footer-nav a { color: white; }
+.welcome-mode .login-nav--mobile { display: none; }
+.welcome-mode .splash-overlay { background: #2a3647; }
+.welcome-mode .splash-logo-blue { display: none; }
+.welcome-mode .splash-logo-white { opacity: 1; }
+@media (max-width: 700px) {
+  .welcome-mode { gap: 0; }
+  .welcome-mode header { padding: 28px 24px 16px; min-height: 100px; align-items: flex-start; }
+  .welcome-mode header .join-logo-blue { visibility: visible; width: 52px; height: 64px; content: url('../assets/icons/join-logo-white.svg'); }
+  .welcome-mode header .login-nav { visibility: hidden; display: none; }
+  .welcome-mode .issue-request-link { display: none; }
+  .welcome-mode .not-a-user-text { font-size: 16px; color: white; }
+  .welcome-mode .button-signup-small { padding: 4px 8px; font-size: 16px; }
+  .welcome-mode main { padding: 8px 16px 24px; }
+  .welcome-card { width: min(calc(100vw - 32px), 520px); padding: 32px 24px 40px; border-radius: 28px; }
+  .welcome-card h1 { font-size: 32px; }
+  .welcome-underline { margin-bottom: 32px; }
+  .welcome-intro { font-size: 16px; text-align: center; margin-bottom: 40px; }
+  .welcome-options { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .welcome-option p { justify-content: center; font-size: 16px; }
+  .welcome-mode footer { padding: 12px 16px 28px; }
+  .welcome-mode .footer-nav { gap: 24px; }
+}
+@media (max-width: 375px) {
+  .welcome-mode header { min-height: 82px; padding: 18px 16px 8px; }
+  .welcome-mode header .join-logo-blue { width: 44px; height: 54px; }
+  .welcome-mode main { padding: 4px 12px 12px; }
+  .welcome-card { width: 100%; padding: 24px 16px 28px; border-radius: 24px; }
+  .welcome-card h1 { font-size: 28px; }
+  .welcome-underline { width: 92px; margin: 10px auto 24px; }
+  .welcome-intro { margin-bottom: 28px; }
+  .welcome-options { gap: 28px; }
+  .welcome-button { min-height: 44px; }
+  .welcome-mode footer { padding: 8px 12px 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .splash-overlay { display: none !important; } }

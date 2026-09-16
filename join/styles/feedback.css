@@ -1,0 +1,737 @@
+/* Feedback layout: preserve application data and existing interactions. */
+.summary-page { width: 100%; max-width: 1160px; }
+.summary-body { gap: 48px; flex-wrap: nowrap; }
+.summary-cards { flex: 0 1 560px; min-width: 0; width: 100%; }
+.cards-row-middle { align-items: stretch; }
+.cards-row-middle .metric-card-wide { flex: 2; min-width: 0; gap: 16px; padding: 24px; }
+.cards-row-middle .metric-card-ai { flex: 0.7; min-width: 100px; padding: 20px 12px; }
+.metric-card-ai { background: white; color: #2a3647; }
+.metric-card-ai .card-count {
+  color: transparent;
+  background: linear-gradient(180deg, #8933fc 0%, #29abe2 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.card-urgent-side { flex: 0 0 auto; gap: 12px; }
+.card-deadline { min-width: 0; }
+.deadline-date { font-size: 17px; white-space: normal; }
+.deadline-label { font-size: 16px; }
+.summary-greeting { min-width: 0; }
+.summary-greeting p { font-size: 48px; overflow-wrap: anywhere; }
+.card-info { align-items: center; }
+.metric-card-icon { justify-content: center; padding: 28px 24px; }
+.metric-card-bottom { min-width: 0; min-height: 120px; }
+.card-label { line-height: 1.25; }
+.metric-card { text-decoration: none; }
+.task-titles { gap: 20px; }
+.task-lanes { min-width: 0; max-width: none; }
+.task-title { align-items: center; gap: 8px; }
+.task-title h2 { font-size: 18px; }
+.task-lanes--triage .task-title h2 { color: #42526e; }
+.card-container { margin-top: 20px; align-items: stretch !important; }
+.card { width: 100%; max-width: none; gap: 14px; padding: 16px; }
+.card-descr { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; line-height: 1.35; }
+.card-text { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.card-footer { min-height: 32px; margin-left: 0; }
+.card-footer > img:last-child { margin-left: auto; }
+.card-footer > :last-child { margin-left: auto; }
+.category-field { font-weight: 400; }
+.task-dialog-header { height: auto; gap: 10px; flex-wrap: nowrap; }
+.task-dialog-header { position: relative; padding-right: 28px; }
+.category-field-dialog { font-size: 18px; }
+.ai-ticket-marker { color: #6c52ff; font-size: 20px; display: inline-flex; align-items: center; gap: 8px; }
+.ai-ticket-marker > span { color: #6c52ff; font-size: 24px; }
+.close-task-dialog-btn { position: absolute; right: 0; top: 0; flex-shrink: 0; }
+.dialog-task-title { font-size: 61px; line-height: 1.2; margin-top: 32px; }
+.dialog-description { line-height: 1.2; font-size: 20px; }
+.dialog-creator { margin-top: 24px; font-size: 16px; gap: 8px; }
+.creator-type--external { background: #d9ff43; color: #177da8; }
+.creator-email { display: inline-flex; align-items: center; gap: 4px; color: #42526e; font-size: 16px; margin-left: auto; text-decoration: none; }
+.creator-email img { width: 24px; height: 24px; }
+.dialog-prio-date { margin-top: 0; }
+.content-wrapper-task-dialog--detailed { padding: 40px; }
+.task-dialog:focus-visible, a:focus-visible, button:focus-visible, .card:focus-visible { outline: 3px solid #29abe2; outline-offset: 3px; }
+@media (max-width: 1200px) and (min-width: 1025px) {
+  .summary-body { gap: 24px; }
+  .summary-greeting h2 { font-size: 28px; }
+  .summary-greeting p { font-size: 36px; }
+  .summary-cards { flex-basis: 500px; }
+  .task-titles { gap: 12px; }
+  .card { padding: 12px; }
+  .task-title h2 { font-size: 16px; }
+}
+@media (max-width: 1024px) {
+  .summary-page { max-width: 560px; }
+  .summary-cards { flex: auto; }
+  .summary-body { gap: 0; }
+  .task-lanes { width: 100%; min-width: 0; }
+  .task-titles { gap: 28px; width: 100%; min-width: 0; }
+  .card-container { margin-top: 12px; max-width: 100%; }
+  .card { width: 252px; flex: 0 0 252px; }
+}
+@media (max-width: 600px) {
+  .summary-title { margin-bottom: 32px; }
+  .summary-cards { gap: 16px; }
+  .cards-row { gap: 12px; }
+  .cards-row-middle .metric-card-wide { padding: 14px 10px; gap: 10px; }
+  .cards-row-middle .metric-card-ai { min-width: 76px; padding: 12px 8px; }
+  .card-urgent-side { gap: 6px; }
+  .card-icon-circle { width: 32px; height: 32px; }
+  .card-divider { flex: 0 0 2px; height: 54px; }
+  .deadline-date { font-size: 16px; }
+  .deadline-label { font-size: 16px; }
+  .metric-card-bottom .card-label { font-size: 16px; }
+  .metric-card-bottom { min-height: 96px; }
+  .metric-card-icon { padding: 20px 12px; }
+  .content-wrapper-task-dialog--detailed { padding: 24px; }
+  .dialog-task-title { font-size: 34px; }
+  .dialog-description, .dialog-text-label, .dialog-prio-date { font-size: 16px; }
+  .category-field-dialog { font-size: 16px; }
+  .ai-ticket-marker { font-size: 16px; gap: 3px; }
+  .task-dialog-header { gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .summary-greeting { transition: none; }
+  .metric-card, .task-dialog[open] { animation: none; transition: none; }
+}
+
+/* Final Figma alignment: board lanes, cards and task detail overlay. */
+.board-section,
+.task-titles {
+  width: 100%;
+  min-width: 0;
+}
+
+.task-titles {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.task-lanes {
+  min-width: 0;
+  max-width: none;
+}
+
+.task-title {
+  min-height: 32px;
+}
+
+.task-title h2 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.card-container {
+  width: 100%;
+  min-width: 0;
+  margin-top: 20px;
+}
+
+.card {
+  min-width: 0;
+  border-radius: 24px;
+  padding: 16px;
+}
+
+.empty-card-container {
+  min-height: 45px;
+  height: auto;
+  padding: 10px;
+  margin-bottom: 0;
+}
+
+.category-field,
+.category-field-dialog {
+  border-radius: 5px;
+  font-weight: 400;
+}
+
+.task-dialog-header .ai-generated-badge-detail,
+.ai-ticket-marker {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #6c52ff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.ai-ticket-marker > span {
+  font-size: 20px;
+}
+
+.creator-badge.badge-internal {
+  background: #d8fce6;
+  color: #087d5b;
+}
+
+.creator-badge.badge-external {
+  background: #d9ff43;
+  color: #177da8;
+}
+
+.creator-email {
+  color: #177da8;
+}
+
+.dialog-contact-row {
+  gap: 12px;
+  padding-left: 16px;
+}
+
+/* Responsive summary: readable at 320px without clipped cards or navigation. */
+@media (max-width: 1024px) {
+  .summary-page {
+    width: 100%;
+    max-width: 560px;
+    padding: 12px 0 20px;
+  }
+
+  .summary-title {
+    margin-bottom: 24px;
+  }
+
+  .summary-body,
+  .summary-cards {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .summary-body {
+    gap: 0;
+  }
+
+  .summary-cards {
+    gap: 14px;
+  }
+
+  .cards-row {
+    display: grid;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .cards-row-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cards-row-middle {
+    grid-template-columns: minmax(0, 2fr) minmax(96px, 1fr);
+  }
+
+  .cards-row-bottom {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .metric-card,
+  .cards-row-middle .metric-card-wide,
+  .cards-row-middle .metric-card-ai {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .metric-card-bottom {
+    min-height: 104px;
+  }
+
+  .task-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .summary-page {
+    max-width: none;
+    padding-top: 8px;
+  }
+
+  .summary-title {
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .summary-title h1 {
+    font-size: 32px;
+  }
+
+  .summary-title p {
+    font-size: 20px;
+  }
+
+  .summary-cards,
+  .cards-row {
+    gap: 8px;
+  }
+
+  .metric-card {
+    border-radius: 16px;
+  }
+
+  .metric-card-icon {
+    min-height: 94px;
+    padding: 12px 10px;
+    gap: 8px;
+  }
+
+  .card-icon-circle {
+    width: 38px;
+    height: 38px;
+  }
+
+  .card-count,
+  .metric-card-bottom .card-count {
+    font-size: 28px;
+  }
+
+  .card-label,
+  .metric-card-bottom .card-label {
+    font-size: 16px;
+    line-height: 1.15;
+  }
+
+  .cards-row-middle .metric-card-wide {
+    min-height: 112px;
+    padding: 12px 10px;
+    gap: 8px;
+  }
+
+  .cards-row-middle .metric-card-ai {
+    min-width: 88px;
+    min-height: 112px;
+    padding: 10px 6px;
+  }
+
+  .card-urgent-side {
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .card-divider {
+    height: 64px;
+  }
+
+  .deadline-date,
+  .deadline-label {
+    font-size: 16px;
+    overflow-wrap: anywhere;
+  }
+
+  .metric-card-bottom {
+    min-height: 100px;
+    padding: 10px 4px;
+  }
+
+  .task-dialog {
+    width: calc(100dvw - 24px);
+    max-height: calc(100dvh - 24px);
+    border-radius: 24px;
+  }
+
+  .content-wrapper-task-dialog,
+  .content-wrapper-task-dialog--detailed {
+    max-height: calc(100dvh - 24px);
+  }
+
+  .content-wrapper-task-dialog--detailed {
+    padding: 24px 20px;
+  }
+
+  .task-dialog-header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-right: 28px;
+  }
+
+  .dialog-task-title {
+    margin-top: 24px;
+    font-size: 36px;
+    line-height: 1.15;
+  }
+
+  .dialog-creator {
+    align-items: flex-start;
+  }
+
+  .creator-email {
+    width: 100%;
+    margin-left: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 375px) {
+  .summary-title h1 {
+    font-size: 28px;
+  }
+
+  .summary-title p {
+    font-size: 18px;
+  }
+
+  .metric-card-icon {
+    flex-direction: column;
+    min-height: 112px;
+    justify-content: center;
+  }
+
+  .card-icon-circle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .cards-row-middle {
+    grid-template-columns: minmax(0, 2fr) minmax(86px, 1fr);
+  }
+
+  .card-count,
+  .metric-card-bottom .card-count {
+    font-size: 26px;
+  }
+
+  .board-header {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .card-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .dialog-task-title {
+    font-size: 32px;
+  }
+}
+
+/* Figma task overlay: exact header icon, creator row and modal proportions. */
+@media (min-width: 601px) {
+  .task-dialog.task-dialog--detailed {
+    width: min(533px, calc(100dvw - 32px));
+    max-width: 533px;
+    max-height: calc(100dvh - 24px);
+    border-radius: 30px;
+  }
+
+  .content-wrapper-task-dialog--detailed {
+    box-sizing: border-box;
+    padding: 48px 42px 42px;
+  }
+
+  .content-wrapper-task-dialog--internal {
+    min-height: min(970px, calc(100dvh - 24px));
+  }
+
+  .content-wrapper-task-dialog--external {
+    min-height: min(928px, calc(100dvh - 24px));
+  }
+}
+
+.task-dialog-header {
+  min-height: 37px;
+  padding-right: 0;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.task-dialog-header--ai {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) 36px;
+  align-items: center;
+  column-gap: 12px;
+}
+
+.task-dialog-header--standard {
+  display: flex;
+}
+
+.category-field-dialog {
+  flex: 0 0 auto;
+  padding: 6px 24px;
+  border-radius: 8px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.ai-ticket-marker,
+.task-dialog-header .ai-generated-badge-detail {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  gap: 7px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #7447ff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  white-space: normal;
+  overflow-wrap: normal;
+}
+
+.ai-ticket-marker > span {
+  min-width: 0;
+}
+
+.ai-ticket-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  object-fit: contain;
+}
+
+.close-task-dialog-btn {
+  position: static;
+  width: 32px;
+  height: 32px;
+  margin-left: auto;
+  flex: 0 0 32px;
+  justify-self: end;
+}
+
+.close-task-dialog-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.dialog-task-title {
+  margin: 30px 0 0;
+  color: #000000;
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1.27;
+  letter-spacing: -1px;
+}
+
+.dialog-description {
+  margin-top: 22px;
+  color: #2a3647;
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.dialog-creator {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 10px;
+  margin-top: 24px;
+  font-size: 16px;
+}
+
+.dialog-creator .dialog-text-label,
+.dialog-prio-row .dialog-text-label {
+  margin: 0;
+  color: #42526e;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.creator-identity {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 8px;
+}
+
+.creator-type,
+.creator-badge {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 3px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.creator-type img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.creator-type--external::before {
+  content: none;
+}
+
+.creator-badge.badge-internal,
+.creator-type--internal {
+  background: #95ffc3;
+  color: #007c91;
+}
+
+.creator-badge.badge-external,
+.creator-type--external {
+  background: #dfff54;
+  color: #177da8;
+}
+
+.creator-name {
+  min-width: 0;
+  color: #2a3647;
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+
+.creator-action,
+.creator-email,
+.creator-profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 0;
+  color: #42526e;
+  font-size: 16px;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.creator-action img,
+.creator-email img,
+.creator-profile img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.dialog-prio-date {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.dialog-prio-row {
+  display: grid;
+  grid-template-columns: 106px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  color: #000000;
+  font-size: 20px;
+}
+
+.dialog-prio-row img {
+  margin-left: 4px;
+}
+
+.dialog-assigned-section {
+  margin-top: 28px;
+}
+
+.dialog-assigned-section > .dialog-text-label,
+.dialog-subtasks-section > .dialog-text-label {
+  margin: 0;
+  color: #42526e;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.dialog-contacts-container {
+  margin-top: 12px;
+}
+
+.dialog-contact-row {
+  gap: 16px;
+  margin-top: 12px;
+  padding-left: 18px;
+}
+
+.dialog-contact-name {
+  color: #000000;
+  font-size: 20px;
+}
+
+.dialog-subtasks-section {
+  margin-top: 28px;
+}
+
+.dialog-subtasks-container {
+  margin-top: 10px;
+}
+
+.dialog-subtask-row {
+  margin-top: 10px;
+  padding-left: 18px;
+}
+
+.custom-subtask-checkbox {
+  gap: 14px;
+}
+
+.dialog-footer {
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+@media (max-width: 600px) {
+  .task-dialog-header {
+    align-items: center;
+    padding-right: 0;
+  }
+
+  .task-dialog-header--ai {
+    grid-template-columns: max-content minmax(0, 1fr) 32px;
+    column-gap: 8px;
+  }
+
+  .category-field-dialog {
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+
+  .ai-ticket-marker,
+  .task-dialog-header .ai-generated-badge-detail {
+    gap: 4px;
+    font-size: 16px;
+  }
+
+  .ai-ticket-icon {
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+  }
+
+  .dialog-task-title {
+    margin-top: 22px;
+    font-size: 34px;
+    line-height: 1.15;
+  }
+
+  .dialog-description {
+    font-size: 16px;
+  }
+
+  .dialog-creator {
+    grid-template-columns: auto minmax(0, 1fr);
+    row-gap: 10px;
+  }
+
+  .dialog-creator .dialog-text-label,
+  .dialog-prio-row .dialog-text-label,
+  .dialog-assigned-section > .dialog-text-label,
+  .dialog-subtasks-section > .dialog-text-label,
+  .dialog-prio-row,
+  .dialog-contact-name {
+    font-size: 16px;
+  }
+
+  .creator-action {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .dialog-prio-row {
+    grid-template-columns: 88px minmax(0, 1fr);
+  }
+}

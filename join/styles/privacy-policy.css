@@ -1,0 +1,148 @@
+.main-content {
+  color: black;
+  line-height: 1.4;
+}
+
+.privacy-container {
+  max-width: 1000px;
+}
+
+.privacy-container h1 {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.privacy-container h2 {
+  font-size: 28px;
+  margin-top: 32px;
+  margin-bottom: 6px;
+}
+
+.privacy-container p,
+.privacy-container li {
+  font-size: 16px;
+}
+
+.privacy-container ul {
+  list-style: disc;
+  margin-left: 20px;
+}
+
+.privacy-contact-section {
+  background-color: var(--light-gray);
+  border-radius: 10px;
+  margin-top: 40px;
+}
+
+.help-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  margin-top: 48px;
+}
+
+.back-arrow {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: var(--transition-default);
+  background: none;
+  border: none;
+}
+
+.back-arrow:hover {
+  background-color: rgba(41, 171, 226, 0.1);
+}
+
+.back-arrow img {
+  width: 32px;
+  height: auto;
+}
+
+/* #region responsive */
+@media screen and (max-width: 1024px) {
+  .help-title-row {
+    margin-top: 0;
+  }
+
+  .privacy-container h1 {
+    font-size: 48px;
+  }
+
+  .li-nav-link--privacy-policy-resp {
+    height: 100%;
+    padding: 4px;
+  }
+
+  .li-nav-link--privacy-policy-resp a {
+    height: 100%;
+  }
+
+  .back-arrow {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .privacy-container h1 {
+    font-size: 40px;
+  }
+  .privacy-container h2 {
+    font-size: 24px;
+  }
+
+  .help-title-row {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .privacy-container h1 {
+    font-size: 36px;
+  }
+
+  .help-title-row {
+    margin-bottom: 16px;
+  }
+  .privacy-container h2 {
+    font-size: 22px;
+    margin-top: 16px;
+    margin-bottom: 6px;
+  }
+
+  .privacy-container p,
+  .privacy-container li {
+    margin-bottom: 0px;
+  }
+
+  .privacy-contact-section {
+    margin-top: 0;
+  }
+
+  .nav-login-item {
+    padding-left: 8px;
+  }
+
+  .nav-link {
+    padding: 8px;
+  }
+  .back-arrow img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .privacy-container h1 {
+    font-size: 28px;
+  }
+  .privacy-container h2 {
+    font-size: 20px;
+  }
+}
+
+/* #endregion */

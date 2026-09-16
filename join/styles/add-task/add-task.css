@@ -1,0 +1,299 @@
+:root {
+  --textarea-height: 120px;
+  --transition-default: all 100ms ease-in-out;
+
+  --width-content-wrapper: calc(var(--input-width) * 2 + 32px * 2 + 1px);
+  --padding-lr-big: 80px;
+  --padding-lr-medium: 48px;
+  --padding-lr-small: 24px;
+
+  --padding-lr-main-add-task: var(--padding-lr-main);
+}
+
+.main-content--add-task {
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-lr-main-add-task);
+}
+
+.add-task-headline--add-task {
+  margin-bottom: 48px;
+}
+
+.description-textarea {
+  padding: 18px 16px;
+  height: var(--textarea-height);
+  resize: vertical;
+}
+
+input {
+  padding: 12px 16px;
+}
+
+.add-task-container > section {
+  margin-bottom: 32px;
+}
+
+.red {
+  color: rgb(240, 68, 68);
+}
+
+.description-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.seperation-line {
+  width: 1px;
+  background-color: var(--light-gray2);
+  margin: 0 32px;
+  max-height: 450px;
+}
+
+.custom-select--categories {
+  flex-direction: column;
+}
+
+/* #region prio btns */
+
+.add-task-prio-btns-container {
+  display: flex;
+  justify-content: space-between;
+  width: var(--input-width);
+}
+
+.prio-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 10px;
+  background-color: white;
+  border-radius: var(--border-radius-s);
+  width: 120px;
+  gap: 8px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.1s ease-in;
+  color: black;
+}
+
+.prio-btn:hover {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.1s ease-in;
+}
+
+.prio-btn:focus-visible {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.1s ease-in;
+  outline: 1px solid black;
+}
+
+.urgent-active,
+.medium-active,
+.low-active {
+  color: white;
+  font-weight: 700;
+}
+
+.urgent-active:hover,
+.medium-active:hover,
+.low-active:hover {
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
+.urgent-active {
+  background-color: #ff3d00;
+}
+.medium-active {
+  background-color: var(--light-orange);
+}
+.low-active {
+  background-color: #7ae229;
+}
+
+.active-svg {
+  fill: white;
+  stroke: white;
+}
+
+#urgent-prio-svg,
+#low-prio-svg {
+  width: 20px;
+  height: 15px;
+}
+
+#medium-prio-svg {
+  height: 10px;
+  width: 20px;
+}
+
+/* #endregion */
+
+/* #region bottom btns container */
+
+.p-required {
+  font-size: 16px;
+}
+
+.p-required--add-task {
+  position: fixed;
+  top: 90dvh;
+  transform: translateY(100%);
+  left: calc(var(--sidebar-width) + var(--padding-lr-main-add-task));
+}
+
+.add-task-bottom-btns-container--add-task {
+  position: fixed;
+  top: 90dvh;
+  left: calc(
+    var(--sidebar-width) + var(--padding-lr-main-add-task) +
+      (var(--width-content-wrapper))
+  );
+  transform: translateX(-100%);
+}
+
+.button-white--add-task {
+  background-color: var(--light-gray);
+}
+
+.bottom-btns-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.bottom-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+}
+
+/* #endregion */
+
+/* #region task form */
+
+.add-task-inner-wrapper {
+  display: flex;
+}
+
+.add-task-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-task-container > section {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-form * {
+  font-size: 20px;
+}
+
+.task-form--add-task {
+  position: relative;
+  margin-bottom: 64px;
+}
+
+.label {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.task-date-input {
+  cursor: pointer;
+}
+
+.calendar-svg-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: transparent;
+}
+
+.calendar-svg-btn:hover {
+  background-color: #eeeeee;
+}
+
+.calendar-svg-btn:focus-visible {
+  background-color: var(--light-gray2);
+  outline: none;
+}
+
+.task-date-input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.due-date-container {
+  margin-bottom: 32px;
+}
+
+.task-date-input:invalid::-webkit-datetime-edit-text,
+.task-date-input:invalid::-webkit-datetime-edit-month-field,
+.task-date-input:invalid::-webkit-datetime-edit-day-field,
+.task-date-input:invalid::-webkit-datetime-edit-year-field {
+  color: var(--light-gray2);
+}
+
+.task-date-input:focus::-webkit-datetime-edit-text,
+.task-date-input:focus::-webkit-datetime-edit-month-field,
+.task-date-input:focus::-webkit-datetime-edit-day-field,
+.task-date-input:focus::-webkit-datetime-edit-year-field {
+  color: black;
+}
+
+.task-date-input:valid::-webkit-datetime-edit-text,
+.task-date-input:valid::-webkit-datetime-edit-month-field,
+.task-date-input:valid::-webkit-datetime-edit-day-field,
+.task-date-input:valid::-webkit-datetime-edit-year-field {
+  color: black;
+}
+
+/* #endregion  */
+
+/* #region toast message */
+
+.addtask-toast-msg {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0px;
+  width: 325px;
+  gap: 16px;
+  border-radius: 20px;
+  color: white;
+  font-size: 20px;
+  background-color: var(--dark-blue);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  transition: var(--transition-default);
+}
+
+.addtask-toast-msg--add-task {
+  left: calc((var(--width-content-wrapper) / 2));
+  top: 500px;
+  transform: translate(50%, 100dvh);
+}
+
+.addtask-toast-msg--dialog {
+  top: calc(50% - (74px / 2));
+  align-self: center;
+  transform: translate(0, 100dvh);
+}
+
+.display-toast-msg-add-task {
+  transform: translate(50%, 0);
+  transition: var(--transition-default);
+}
+
+.display-toast-msg-dialog {
+  transform: translate(0, 0);
+  transition: var(--transition-default);
+}
+
+/* #endregion */

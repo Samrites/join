@@ -67,7 +67,16 @@
 
   .login-nav--mobile {
     display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 20px;
     margin-bottom: 48px;
+  }
+
+  .login-nav--mobile .issue-request-link {
+    flex-basis: 100%;
+    text-align: center;
   }
 
   .splash-overlay {

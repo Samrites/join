@@ -442,7 +442,7 @@
 
 .task-dialog-header--ai {
   display: grid;
-  grid-template-columns: max-content minmax(0, 1fr) 36px;
+  grid-template-columns: max-content minmax(0, 1fr) 32px;
   align-items: center;
   column-gap: 12px;
 }
@@ -464,27 +464,32 @@
   display: inline-flex;
   align-items: center;
   min-width: 0;
-  gap: 7px;
+  gap: 8px;
   padding: 0;
   border: 0;
   background: transparent;
-  color: #7447ff;
+  color: #6c52ff;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.2;
-  white-space: normal;
+  white-space: nowrap;
   overflow-wrap: normal;
 }
 
+.ai-ticket-marker > span { min-width: 0; }
+
 .ai-ticket-marker > span {
-  min-width: 0;
+  color: #6c52ff;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.2;
 }
 
 .ai-ticket-icon {
   display: block;
-  width: 24px;
-  height: 24px;
-  flex: 0 0 24px;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
   object-fit: contain;
 }
 
@@ -498,8 +503,8 @@
 }
 
 .close-task-dialog-btn img {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
 }
 
 .dialog-task-title {
@@ -702,6 +707,15 @@
     flex-basis: 20px;
   }
 
+  .ai-ticket-marker > span {
+    font-size: 16px;
+  }
+
+  .close-task-dialog-btn img {
+    width: 20px;
+    height: 20px;
+  }
+
   .dialog-task-title {
     margin-top: 22px;
     font-size: 34px;
@@ -734,4 +748,24 @@
   .dialog-prio-row {
     grid-template-columns: 88px minmax(0, 1fr);
   }
+}
+
+@media (max-width: 480px) {
+  .ai-ticket-marker,
+  .task-dialog-header .ai-generated-badge-detail {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 360px) {
+  .content-wrapper-task-dialog--detailed { padding: 18px 14px 16px; }
+  .task-dialog-header--ai { grid-template-columns: max-content minmax(0, 1fr) 28px; }
+  .category-field-dialog { padding: 5px 8px; }
+  .ai-ticket-marker > span { font-size: 16px; line-height: 1.1; }
+  .close-task-dialog-btn { width: 28px; height: 28px; flex-basis: 28px; }
+  .dialog-task-title { margin-top: 18px; font-size: 30px; }
+  .dialog-creator { grid-template-columns: minmax(0, 1fr); }
+  .dialog-creator .dialog-text-label,
+  .creator-action { grid-column: 1; }
+  .dialog-prio-row { grid-template-columns: 82px minmax(0, 1fr); gap: 6px; }
 }

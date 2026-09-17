@@ -14,10 +14,11 @@ All reviewable n8n exports are committed in the repository folder [`n8n/`](./n8n
 The exports intentionally contain no passwords, tokens or API keys. See
 [`n8n/README.md`](./n8n/README.md) for activation and the required end-to-end test.
 
-## Feedback correction — 13 September 2026
+## Feedback correction - 16 September 2026
 
-The public entry is now `index.html` (Welcome). Member login is available
-at `index.html#login`; external requests at `html/stakeholder.html`.
+The public entry `index.html` opens the member login directly. External requests
+are available at `html/stakeholder.html`; the page offers both a mail link and a
+copy-address fallback for visitors without a configured email program.
 See `FEEDBACK-KORREKTUREN.md` for the completed edits, validation and remaining checks.
 The screenshots below show the older group-project version.
 
@@ -74,6 +75,8 @@ This version extends the original group project with a stakeholder-facing email 
 - External creator identity displayed in task details
 - Daily maximum of 10 processed email requests
 - Confirmation, limit, failure and status-update email workflow templates
+- Mail-client-independent copy-address fallback on the stakeholder page
+- AI prompt and deterministic validation prevent duplicate subtasks
 - No credentials or API keys committed to the repository
 
 ### 📱 Responsive Design
@@ -157,9 +160,9 @@ Serve the repository root through a local web server (for example the VS Code Li
 
 ### 4. Configure the public pages
 
-- Replace `YOUR_REQUEST_EMAIL@example.com` in `html/stakeholder.html`.
-- Add the public limit-status endpoint to `scripts/stakeholder.js` when available.
-- Add the production status webhook URL to `scripts/config.js`.
+- Confirm `join.issue.collector2026@gmail.com` in the n8n credentials.
+- Confirm the production limit-status endpoint in `scripts/stakeholder.js`.
+- Confirm the production status webhook URL in `scripts/config.js`.
 
 Do not place Gemini keys, mail passwords, Firebase tokens or n8n encryption keys in frontend JavaScript or Git.
 

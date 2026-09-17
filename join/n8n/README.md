@@ -1,5 +1,10 @@
 # n8n setup
 
+## Reviewer link
+
+- Workflow owner/debug view: https://join-ai-issue-collector.app.n8n.cloud/workflow/ewbysvt1YI11Uljz/debug/91
+- Exported review files are in this `n8n/` directory and contain no credentials.
+
 ## Workflow files for review
 
 - `issue-collector.json` — main email-to-ticket workflow
@@ -23,6 +28,7 @@ Import all JSON workflows and select your own IMAP and SMTP credentials inside n
 - Daily limit `10`
 
 The Gemini prompt returns `due_date` and up to five `subtasks`. Relative dates such as “morgen” or “in 2 Tagen” are calculated from the received email date. The validation node converts subtask titles into Join's `{ title, done }` schema before the Firebase write.
+It also removes duplicate subtasks and any subtask that repeats the ticket title.
 
 After activating `Join - External Creator Status Notification`, copy its production webhook URL into `scripts/config.js`. The URL is not a password, but Firebase and n8n must still validate all incoming data.
 

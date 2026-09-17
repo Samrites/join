@@ -15,7 +15,7 @@
   </header>
   <main>
     <div class="request-topbar">
-      <a class="back-link" href="../index.html" aria-label="Back to Welcome">&#8592;</a>
+      <a class="back-link" href="../index.html" aria-label="Back to login">&#8592;</a>
       <p id="limit-status" aria-live="polite"><strong>0</strong> of <strong>10</strong> requests used today</p>
     </div>
     <h1>Welcome</h1>
@@ -26,6 +26,15 @@
         <p>On this platform, you can submit your feature requests via email. Our AI system will automatically generate a ticket with a deadline and priority level.</p>
         <p>A total of 10 requests can be created per day. After this limit, emails can still be sent, but they will be manually reviewed by our team instead of generating AI tickets.</p>
         <a id="request-email-link" class="primary-action" href="mailto:join.issue.collector2026@gmail.com?subject=Join%20Feature%20Request"><span class="desktop-action-label">Create Email Request</span><span class="mobile-action-label">Create request</span><span class="action-check" aria-hidden="true">✓</span></a>
+        <section class="email-fallback" aria-labelledby="email-fallback-title">
+          <h3 id="email-fallback-title">No email app installed?</h3>
+          <p>Copy the address and send your request with any webmail service.</p>
+          <div class="email-copy-row">
+            <span id="request-email-address" data-email-ready="true">join.issue.collector2026@gmail.com</span>
+            <button id="copy-email-button" type="button">Copy email</button>
+          </div>
+          <p id="copy-email-status" class="copy-email-status" aria-live="polite"></p>
+        </section>
         <p id="limit-copy" class="status-note" aria-live="polite"></p>
       </div>
     </section>

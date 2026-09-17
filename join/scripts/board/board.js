@@ -204,7 +204,7 @@ function renderCategoryContent(todo, container) {
 function getCategoryColor(category) {
   if (!category) return "gray";
   let cat = category.toLowerCase();
-  if (cat.includes("story") || cat.includes("user")) return "#0038FF";
+  if (cat.includes("story") || cat.includes("user")) return "#712CF9";
   if (cat.includes("technical") || cat.includes("task")) return "#1FD7C1";
   if (cat.includes("bug")) return "#FF1A1A";
   return "#FF7A00";

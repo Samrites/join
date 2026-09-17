@@ -59,7 +59,6 @@ function closeTaskDialog() {
 function renderDialogContacts(todo) {
   const assignedContacts = normalizeAssignedContacts(todo["assigned_contacts"]);
   if (assignedContacts.length === 0) return "<p>No one assigned</p>";
-
   return assignedContacts
     .map((contact) => {
       let name = getAssignedContactName(contact);
@@ -72,8 +71,7 @@ function renderDialogContacts(todo) {
 
 /**
  * Converts Firebase array/object contact values to a predictable array.
- * The email creator is deliberately not included: card initials represent
- * assigned team members only.
+ * Email senders are creators, not assigned team members.
  *
  * @param {Array<Object|string>|Object|null|undefined} assignedContacts
  * @returns {Array<Object|string>}
@@ -228,7 +226,6 @@ function initDialogCloseOnClickOutside() {
 function generateAssignedBadgesHTML(todo) {
   let contactsList = normalizeAssignedContacts(todo["assigned_contacts"]);
   if (contactsList.length === 0) return "";
-
   let renderedContacts = contactsList.slice(0, 4);
   let html = renderSingleBadges(renderedContacts);
   let extraCount = contactsList.length - 4;

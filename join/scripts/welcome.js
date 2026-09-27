@@ -1,10 +1,13 @@
-/** Keep existing login handlers and paths; the public entry is always Welcome. */
+/** Switches the index between the Figma Welcome entry and the existing login view. */
 function showEntryView() {
-  const login = window.location.hash === "#login";
-  document.body.classList.toggle("welcome-mode", !login);
-  document.title = login ? "Join - Log in" : "Join - Welcome";
-  document.getElementById("login-form").hidden = !login;
-  document.querySelector(".welcome-card").hidden = login;
+  const loginMode = window.location.hash === "#login";
+  const loginForm = document.getElementById("login-form");
+  const welcomeCard = document.querySelector(".welcome-card");
+  document.body.classList.toggle("welcome-mode", !loginMode);
+  document.title = loginMode ? "Join - Log in" : "Join - Welcome";
+  if (loginForm) loginForm.hidden = !loginMode;
+  if (welcomeCard) welcomeCard.hidden = loginMode;
+  if (loginMode) requestAnimationFrame(() => document.getElementById("login-email")?.focus());
 }
 window.addEventListener("hashchange", showEntryView);
-showEntryView();
+window.addEventListener("DOMContentLoaded", showEntryView);

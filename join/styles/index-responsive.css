@@ -212,3 +212,9 @@
     margin: 4px 8px 12px;
   }
 }
+
+/* Figma review values: desktop login 650px; sign-up frame 598x630 with 48/88px padding. */
+@media screen and (min-width: 1025px) {
+  :root { --login-container-width: 650px; --signup-container-width: 598px; }
+  .signup-container { width: 598px; min-height: 630px; padding: 48px 88px; gap: 32px; }
+}

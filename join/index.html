@@ -11,6 +11,7 @@
     />
 
     <script src="./script.js" defer></script>
+    <script src="./scripts/welcome.js" defer></script>
 
     <link rel="stylesheet" href="./styles/variables.css" />
     <link rel="stylesheet" href="./styles/standard.css" />
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="./styles/buttons.css" />
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/index-responsive.css" />
+    <link rel="stylesheet" href="./styles/welcome.css" />
     <link rel="stylesheet" href="./styles/templates.css" />
     <link rel="stylesheet" href="./styles/templates-responsive.css" />
   </head>
@@ -44,7 +46,6 @@
         alt="logo"
       />
       <nav class="login-nav login-nav--desktop">
-        <a class="issue-request-link" href="./html/stakeholder.html">Create request</a>
         <p class="not-a-user-text" href="#">Not a join user?</p>
         <a href="./html/signup.html">
           <button class="button button-blue button-signup-small">
@@ -55,6 +56,22 @@
     </header>
 
     <main>
+      <section class="welcome-card" aria-labelledby="welcome-title">
+        <h1 id="welcome-title">Welcome</h1>
+        <div class="welcome-title-line" aria-hidden="true"></div>
+        <p class="welcome-intro">Pick the option that suits your role: create a request as a stakeholder or log in if you’re part of the team.</p>
+        <div class="welcome-options">
+          <div class="welcome-option">
+            <p>Are you a stakeholder?</p>
+            <a class="welcome-button welcome-button-primary" href="./html/stakeholder.html">Create request</a>
+          </div>
+          <div class="welcome-option">
+            <p>Are you a team member?</p>
+            <a class="welcome-button welcome-button-secondary" href="#login">Member log in</a>
+          </div>
+        </div>
+      </section>
+
       <form
         onsubmit="handleLogin(event)"
         class="form-container login-container"
@@ -143,7 +160,6 @@
 
     <footer>
       <nav class="login-nav login-nav--mobile">
-        <a class="issue-request-link" href="./html/stakeholder.html">Create request</a>
         <p class="not-a-user-text" href="#">Not a join user?</p>
         <a href="./html/signup.html">
           <button class="button button-blue button-signup-small">

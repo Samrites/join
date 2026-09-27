@@ -22,6 +22,15 @@ copy-address fallback for visitors without a configured email program.
 See `FEEDBACK-KORREKTUREN.md` for the completed edits, validation and remaining checks.
 The screenshots below show the older group-project version.
 
+### Verified end-to-end test
+
+The main issue-collector path was tested end-to-end with an external email request.
+The workflow processed the email, generated structured triage data, created the
+ticket in Firebase, displayed it in the Triage column, and sent a confirmation
+email containing the generated ticket ID back to the external sender. The public
+status Production URL was also tested successfully and returned the current
+`used`, `limit`, and collector email values.
+
 ## 📖 About the Project
 
 **Join** is a Kanban-style web application for task and workflow management.  

@@ -472,7 +472,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.2;
-  white-space: nowrap;
+  white-space: normal;
   overflow-wrap: normal;
 }
 
@@ -747,13 +747,6 @@
 
   .dialog-prio-row {
     grid-template-columns: 88px minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .ai-ticket-marker,
-  .task-dialog-header .ai-generated-badge-detail {
-    white-space: normal;
   }
 }
 

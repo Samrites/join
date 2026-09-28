@@ -1,44 +1,71 @@
-/* #region task dialog (detail view)*/
+/* =========================================================
+   TASK DIALOG
+   Datei: join/styles/board/task-dialog.css
+   ========================================================= */
 
 :root {
   --task-dialog-padding-lr: 40px;
   --task-dialog-padding-tb: 48px;
+  --task-dialog-edit-padding-tb: 32px;
 }
+
+/* =========================================================
+   DETAIL DIALOG
+   ========================================================= */
 
 .task-dialog {
   position: fixed;
+
   border: none;
   background-color: white;
   color: black;
+
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.16);
+
   z-index: 999;
-  overflow-y: hidden;
+
+  overflow: hidden;
+
   max-width: 525px;
   width: 90dvw;
+
   height: fit-content;
   max-height: 85dvh;
+
   border-radius: 30px;
+
   transition:
     display 0.15s allow-discrete,
     overlay 0.15s allow-discrete;
+
   animation: slideOutCentered 0.15s ease-in forwards;
 }
 
 .content-wrapper-task-dialog {
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
   max-height: 85dvh;
   width: 100%;
+
+  box-sizing: border-box;
 }
 
 body:has(.example-dialog[open]),
 body:has(.add-task-dialog[open]) {
   overflow: hidden;
 }
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
 
 @keyframes slideInCentered {
   from {
@@ -68,32 +95,46 @@ body:has(.add-task-dialog[open]) {
   animation: slideInCentered 0.15s ease-out forwards;
 }
 
+/* =========================================================
+   DETAIL CONTENT
+   ========================================================= */
+
 .content-wrapper-task-dialog--detailed {
-  padding: var(--task-dialog-padding-tb) var(--task-dialog-padding-lr);
+  padding:
+    var(--task-dialog-padding-tb)
+    var(--task-dialog-padding-lr);
+
+  box-sizing: border-box;
 }
 
 .dialog-contact-row {
   display: flex;
   align-items: center;
+
   margin-top: 8px;
   padding-left: 15px;
+
+  min-width: 0;
 }
 
 .dialog-contacts-container {
   max-height: 150px;
   overflow-y: auto;
+
   margin-top: 8px;
 }
 
 .dialog-prio-row {
   display: flex;
   align-items: center;
+
   gap: 10px;
 }
 
 .dialog-prio-row img {
   width: 17px;
   height: 12px;
+
   object-fit: contain;
 }
 
@@ -104,48 +145,60 @@ body:has(.add-task-dialog[open]) {
 .dialog-subtasks-container {
   max-height: 150px;
   overflow-y: auto;
+
   margin-top: 8px;
 }
 
 .dialog-subtask-row {
   display: flex;
   align-items: center;
+
   gap: 12px;
+
   margin-top: 8px;
+
   cursor: pointer;
   user-select: none;
+
+  min-width: 0;
 }
 
 .dialog-subtask-checkbox {
   width: 18px;
   height: 18px;
+
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .dialog-subtask-row input[type="checkbox"] {
   appearance: auto !important;
+
   width: 18px;
   height: 18px;
+
   cursor: pointer;
+
   accent-color: #2a3647;
+  flex-shrink: 0;
 }
 
 .dialog-subtask-row label {
   font-size: 16px;
+
   cursor: pointer;
   user-select: none;
+
+  overflow-wrap: anywhere;
 }
 
-/* #endregion */
-
-/* #region task dialog edit mode */
-
-:root {
-  --task-dialog-edit-padding-tb: 32px;
-}
+/* =========================================================
+   EDIT MODE
+   ========================================================= */
 
 .content-wrapper-task-dialog--edit {
-  padding: 0px var(--task-dialog-padding-lr);
+  padding: 0 var(--task-dialog-padding-lr);
+  box-sizing: border-box;
 }
 
 .task-dialog textarea {
@@ -161,6 +214,8 @@ body:has(.add-task-dialog[open]) {
 .content-wrapper-task-dialog--edit .custom-select-input,
 .content-wrapper-task-dialog--edit .custom-select {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .add-task-inner-wrapper--edit-task {
@@ -173,39 +228,66 @@ body:has(.add-task-dialog[open]) {
   }
 }
 
+/* =========================================================
+   EDIT CLOSE BUTTON
+   ========================================================= */
+
 .edit-task-closing-btn-wrapper {
   position: sticky;
   top: 0;
+
   display: flex;
   justify-content: flex-end;
+
   padding-top: var(--task-dialog-edit-padding-tb);
+
   width: 100%;
+
   background-color: white;
+
   z-index: 2;
 }
 
 .edit-task-dialog-closing-btn {
   padding: 8px;
+
   background-color: transparent;
+
+  border: none;
   border-radius: 50%;
+
+  cursor: pointer;
 }
 
 .edit-task-dialog-closing-btn:hover {
   background-color: #eeeeee;
 }
 
+/* =========================================================
+   EDIT OK BUTTON
+   ========================================================= */
+
 .edit-task-ok-btn-wrapper {
   position: sticky;
   bottom: 0;
-  right: 0;
-  padding: 8px 0 var(--task-dialog-edit-padding-tb) 0;
+
+  padding:
+    8px
+    0
+    var(--task-dialog-edit-padding-tb)
+    0;
+
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+
   background-color: white;
+
   width: 100%;
 }
 
-/* #region dialog scrollbar */
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
 
 .content-wrapper-task-dialog {
   --sb-track-color: #ffffff;
@@ -230,7 +312,9 @@ body:has(.add-task-dialog[open]) {
 
 @supports not selector(::-webkit-scrollbar) {
   .content-wrapper-task-dialog {
-    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    scrollbar-color:
+      var(--sb-thumb-color)
+      var(--sb-track-color);
   }
 }
 
@@ -257,49 +341,86 @@ body:has(.add-task-dialog[open]) {
 
 @supports not selector(::-webkit-scrollbar) {
   .content-wrapper-task-dialog * {
-    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    scrollbar-color:
+      var(--sb-thumb-color)
+      var(--sb-track-color);
   }
 }
 
-/* #endregion */
-
-/* #endregion */
-
-/* #region responsive */
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media screen and (max-width: 768px) {
   :root {
-    --task-dialog-padding-lr: 16px;
+    --task-dialog-padding-lr: 20px;
     --task-dialog-padding-tb: 24px;
     --task-dialog-edit-padding-tb: 16px;
   }
+
+  .task-dialog {
+    width: calc(100dvw - 32px);
+    max-height: 90dvh;
+  }
+
+  .content-wrapper-task-dialog {
+    max-height: 90dvh;
+  }
+
+  .dialog-contact-row {
+    padding-left: 8px;
+  }
 }
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media screen and (max-width: 480px) {
   :root {
-    --task-dialog-padding-lr: 8px;
-    --task-dialog-padding-tb: 8px;
+    --task-dialog-padding-lr: 16px;
+    --task-dialog-padding-tb: 16px;
     --task-dialog-edit-padding-tb: 8px;
   }
 
   .task-dialog {
     border-radius: 16px;
+
     max-width: unset;
     max-height: 95dvh;
+
     width: calc(100dvw - 16px);
   }
 
   .content-wrapper-task-dialog {
     max-height: 95dvh;
+
+    --sb-size: 10px;
   }
 
   .content-wrapper-task-dialog--detailed {
-    padding-right: 0px;
+    padding: 16px;
   }
 
-  .content-wrapper-task-dialog {
-    --sb-size: 14px;
+  .content-wrapper-task-dialog--edit {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .dialog-contact-row {
+    padding-left: 0;
+  }
+
+  .dialog-contacts-container,
+  .dialog-subtasks-container {
+    max-height: 130px;
+  }
+
+  .edit-task-closing-btn-wrapper {
+    padding-top: 8px;
+  }
+
+  .edit-task-ok-btn-wrapper {
+    padding-bottom: 8px;
   }
 }
-
-/* #endregion */

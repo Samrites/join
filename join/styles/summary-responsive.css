@@ -1,4 +1,28 @@
+/* =========================================================
+   SUMMARY RESPONSIVE
+   Datei: join/styles/summary/summary-responsive.css
+
+   Feedback:
+   - ca. 1200 x 800 sauber darstellen
+   - 360 px sauber darstellen
+   - früher umbrechen
+   - nichts darf aus dem Viewport laufen
+   ========================================================= */
+
+/* =========================================================
+   NOTEBOOK / SMALL DESKTOP
+   ========================================================= */
+
 @media screen and (max-width: 1440px) {
+  .summary-page {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .summary-title {
+    margin-bottom: 48px;
+  }
+
   .summary-title h1 {
     font-size: 55px;
   }
@@ -7,12 +31,35 @@
     font-size: 24px;
   }
 
-  .card-count {
+  .summary-body {
+    gap: 48px;
+  }
+
+  .summary-cards {
+    flex-basis: 540px;
+    max-width: 540px;
+  }
+
+  .cards-row {
+    gap: 20px;
+  }
+
+  .card-count,
+  .metric-card-bottom .card-count {
     font-size: 42px;
   }
 
-  .metric-card-bottom .card-count {
-    font-size: 42px;
+  .metric-card-icon {
+    padding: 20px 24px;
+  }
+
+  .metric-card-wide {
+    padding: 20px 24px;
+    gap: 24px;
+  }
+
+  .summary-greeting {
+    flex-basis: 260px;
   }
 
   .summary-greeting h2 {
@@ -20,13 +67,96 @@
   }
 
   .summary-greeting p {
-    font-size: 55px;
+    font-size: 50px;
+  }
+}
+
+/* =========================================================
+   1200 PX NOTEBOOK
+   ========================================================= */
+
+@media screen and (max-width: 1200px) {
+  .summary-page {
+    width: 100%;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .summary-title {
+    gap: 18px;
+    margin-bottom: 36px;
+  }
+
+  .summary-title h1 {
+    font-size: 48px;
+  }
+
+  .summary-title p {
+    font-size: 21px;
+  }
+
+  .summary-body {
+    gap: 32px;
   }
 
   .summary-cards {
-    min-width: 500px;
+    flex: 1 1 500px;
+    max-width: 520px;
+  }
+
+  .cards-row {
+    gap: 16px;
+  }
+
+  .metric-card-icon {
+    padding: 18px 16px;
+    gap: 10px;
+  }
+
+  .card-icon-circle {
+    width: 48px;
+    height: 48px;
+  }
+
+  .card-count,
+  .metric-card-bottom .card-count {
+    font-size: 36px;
+  }
+
+  .card-label {
+    font-size: 17px;
+  }
+
+  .metric-card-wide {
+    padding: 18px;
+    gap: 18px;
+  }
+
+  .card-urgent-side {
+    gap: 10px;
+  }
+
+  .deadline-date {
+    font-size: 18px;
+  }
+
+  .summary-greeting {
+    flex: 1 1 230px;
+    max-width: 320px;
+  }
+
+  .summary-greeting h2 {
+    font-size: 34px;
+  }
+
+  .summary-greeting p {
+    font-size: 42px;
   }
 }
+
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media screen and (max-width: 1024px) {
   .main-content {
@@ -35,18 +165,18 @@
     justify-content: center;
   }
 
-  .summary-title {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 20px;
-    flex-direction: column;
+  .summary-page {
+    position: relative;
+    width: 100%;
+    padding: 16px 0 24px;
   }
 
-  .summary-page {
-    padding: 0;
-    align-self: center;
-    justify-self: center;
+  .summary-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 32px;
   }
 
   .summary-title h1 {
@@ -57,14 +187,29 @@
     font-size: 20px;
   }
 
+  .title-divider {
+    display: block;
+    order: 1;
+    width: 100px;
+    height: 3px;
+  }
+
   .summary-body {
-    flex-direction: column-reverse;
-    gap: 48px;
+    width: 100%;
+    flex-direction: column;
     align-items: stretch;
+    gap: 32px;
   }
 
   .summary-cards {
-    min-width: unset;
+    width: 100%;
+    max-width: 600px;
+    min-width: 0;
+    margin: 0 auto;
+  }
+
+  .cards-row {
+    width: 100%;
   }
 
   .card-count,
@@ -80,242 +225,39 @@
     width: 50px;
     height: 50px;
   }
-}
-
-@media screen and (max-width: 768px) {
-  .summary-title {
-    gap: 16px;
-    margin-bottom: 48px;
-  }
-
-  .summary-title h1 {
-    font-size: 40px;
-  }
-
-  .summary-title p {
-    font-size: 20px;
-  }
-
-  .cards-row {
-    gap: 16px;
-  }
-
-  .card-count,
-  .metric-card-bottom .card-count {
-    font-size: 32px;
-  }
-
-  .card-label {
-    font-size: 16px;
-  }
-
-  .metric-card-icon {
-    padding: 16px 20px;
-    gap: 12px;
-  }
-
-  .metric-card-wide {
-    padding: 20px;
-    gap: 16px;
-  }
-
-  .metric-card-bottom {
-    padding: 16px 8px;
-  }
-
-  .card-icon-circle {
-    width: 44px;
-    height: 44px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .summary-title {
-    gap: 8px;
-    margin-bottom: 24px;
-  }
-
-  .summary-title h1 {
-    font-size: 32px;
-  }
-
-  .summary-title p {
-    font-size: 20px;
-  }
-
-  .cards-row {
-    gap: 8px;
-  }
-
-  .card-count,
-  .metric-card-bottom .card-count {
-    font-size: 24px;
-  }
-
-  .card-label {
-    font-size: 16px;
-  }
-
-  .metric-card {
-    border-radius: 16px;
-  }
-
-  .metric-card-icon {
-    padding: 10px 12px;
-    gap: 8px;
-  }
-
-  .metric-card-wide {
-    padding: 16px;
-    gap: 12px;
-  }
-
-  .metric-card-bottom {
-    padding: 10px 4px;
-  }
-
-  .card-icon-circle {
-    width: 36px;
-    height: 36px;
-  }
-
-  .card-icon-circle svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .deadline-date {
-    font-size: 16px;
-    white-space: nowrap;
-  }
-
-  .deadline-label {
-    font-size: 16px;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .summary-title h1 {
-    font-size: 28px;
-  }
-
-  .card-count,
-  .metric-card-bottom .card-count {
-    font-size: 22px;
-  }
-
-  .card-label {
-    font-size: 16px;
-  }
-
-  .metric-card-icon {
-    padding: 8px 10px;
-  }
-
-  .card-icon-circle {
-    width: 32px;
-    height: 32px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .summary-title {
-    gap: 12px;
-  }
-
-  .summary-title h1 {
-    font-size: 24px;
-  }
-
-  .summary-title p {
-    font-size: 20px;
-  }
-
-  .cards-row {
-    gap: 6px;
-  }
-
-  .card-count,
-  .metric-card-bottom .card-count {
-    font-size: 18px;
-  }
-
-  .card-label {
-    font-size: 16px;
-    line-height: 1.2;
-  }
-
-  .metric-card-icon {
-    padding: 6px 8px;
-    gap: 6px;
-  }
-
-  .metric-card-bottom {
-    padding: 8px 2px;
-  }
-
-  .card-icon-circle {
-    width: 28px;
-    height: 28px;
-  }
-
-  .card-icon-circle svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  .deadline-date {
-    font-size: 16px;
-  }
-
-  .deadline-label {
-    font-size: 16px;
-  }
-}
-
-/* #region mobile greeting animation */
-@media screen and (max-width: 1024px) {
-  .summary-page {
-    position: relative;
-  }
 
   .header-title {
     display: none;
   }
 
-  .title-divider {
-    display: block;
-    width: 100px;
-    height: 3px;
-    order: 1;
-  }
-
   .summary-greeting {
     position: fixed;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--color-bg);
+    left: 0;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    max-width: none;
+    padding: 0 24px;
+
+    background-color: var(--color-bg);
     text-align: center;
-    padding: 0 16px;
+
     z-index: 1000;
+
     opacity: 1;
     transition: opacity 0.125s ease-out;
   }
 
-  .summary-greeting h2 {
-    font-size: 47px;
-    word-break: break-word;
-  }
-
+  .summary-greeting h2,
   .summary-greeting p {
     font-size: 47px;
-    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 
   .summary-greeting.fade-out {
@@ -333,41 +275,342 @@
   }
 }
 
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
 @media screen and (max-width: 768px) {
-  .summary-greeting h2 {
+  .summary-page {
+    width: 100%;
+  }
+
+  .summary-title {
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .summary-title h1 {
+    font-size: 40px;
+  }
+
+  .summary-title p {
+    font-size: 20px;
+  }
+
+  .summary-cards {
+    width: 100%;
+    gap: 16px;
+  }
+
+  .cards-row {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .metric-card {
+    min-width: 0;
+  }
+
+  .card-count,
+  .metric-card-bottom .card-count {
+    font-size: 32px;
+  }
+
+  .card-label {
+    font-size: 16px;
+  }
+
+  .metric-card-icon {
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .metric-card-wide {
+    padding: 18px;
+    gap: 16px;
+  }
+
+  .metric-card-bottom {
+    padding: 16px 8px;
+  }
+
+  .card-icon-circle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .summary-greeting h2,
+  .summary-greeting p {
     font-size: 40px;
   }
 }
 
-.summary-greeting p {
-  font-size: 40px;
-}
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
-@media screen and (max-width: 425px) {
-  .summary-greeting h2 {
+@media screen and (max-width: 480px) {
+  .summary-page {
+    width: 100%;
+    padding: 8px 0 24px;
+    overflow-x: hidden;
+  }
+
+  .summary-title {
+    width: 100%;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .summary-title h1 {
     font-size: 32px;
   }
 
+  .summary-title p {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .title-divider {
+    width: 90px;
+  }
+
+  .summary-cards {
+    width: 100%;
+    max-width: none;
+    gap: 16px;
+  }
+
+  .cards-row {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .metric-card {
+    flex: 1 1 0;
+    min-width: 0;
+    border-radius: 16px;
+  }
+
+  .metric-card-icon {
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px 8px;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .metric-card-icon .card-info {
+    align-items: center;
+  }
+
+  .card-count,
+  .metric-card-bottom .card-count {
+    font-size: 26px;
+  }
+
+  .card-label {
+    margin-top: 4px;
+    font-size: 16px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .card-icon-circle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .card-icon-circle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .metric-card-wide {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+
+    width: 100%;
+
+    padding: 14px 12px;
+    gap: 10px;
+  }
+
+  .card-urgent-side {
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .card-divider {
+    height: 54px;
+  }
+
+  .card-deadline {
+    min-width: 0;
+  }
+
+  .deadline-date {
+    font-size: 16px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .deadline-label {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .metric-card-bottom {
+    min-width: 0;
+    padding: 12px 4px;
+  }
+
+  .summary-greeting {
+    padding: 0 16px;
+  }
+
+  .summary-greeting h2,
   .summary-greeting p {
     font-size: 32px;
   }
 }
+
+/* =========================================================
+   375 / 360 PX
+   ========================================================= */
 
 @media screen and (max-width: 375px) {
-  .summary-greeting h2 {
+  .summary-title {
+    margin-bottom: 20px;
+  }
+
+  .summary-title h1 {
     font-size: 28px;
   }
 
+  .summary-title p {
+    font-size: 18px;
+  }
+
+  .cards-row {
+    gap: 6px;
+  }
+
+  .card-count,
+  .metric-card-bottom .card-count {
+    font-size: 23px;
+  }
+
+  .card-label {
+    font-size: 16px;
+  }
+
+  .metric-card-icon {
+    padding: 10px 5px;
+  }
+
+  .card-icon-circle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .metric-card-wide {
+    padding: 12px 8px;
+    gap: 8px;
+  }
+
+  .card-urgent-side {
+    gap: 6px;
+  }
+
+  .card-divider {
+    height: 48px;
+  }
+
+  .deadline-date,
+  .deadline-label {
+    font-size: 16px;
+  }
+
+  .summary-greeting h2,
   .summary-greeting p {
     font-size: 28px;
   }
 }
 
+/* =========================================================
+   320 PX
+   ========================================================= */
+
 @media screen and (max-width: 320px) {
-  .summary-greeting h2 {
-    font-size: 24px;
+  .summary-title {
+    gap: 8px;
   }
 
+  .summary-title h1 {
+    font-size: 26px;
+  }
+
+  .summary-title p {
+    font-size: 16px;
+  }
+
+  .cards-row {
+    gap: 4px;
+  }
+
+  .metric-card-icon {
+    padding: 8px 3px;
+    gap: 5px;
+  }
+
+  .card-count,
+  .metric-card-bottom .card-count {
+    font-size: 20px;
+  }
+
+  .card-label {
+    font-size: 14px;
+    line-height: 1.15;
+  }
+
+  .card-icon-circle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .card-icon-circle svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .metric-card-wide {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .card-urgent-side {
+    justify-content: center;
+  }
+
+  .card-divider {
+    width: 100%;
+    height: 2px;
+  }
+
+  .card-deadline {
+    align-items: center;
+  }
+
+  .deadline-date,
+  .deadline-label {
+    font-size: 16px;
+  }
+
+  .summary-greeting h2,
   .summary-greeting p {
     font-size: 24px;
   }

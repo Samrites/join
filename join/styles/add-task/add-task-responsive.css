@@ -1,3 +1,8 @@
+/* =========================================================
+   ADD TASK RESPONSIVE
+   Datei: join/styles/add-task/add-task-responsive.css
+   ========================================================= */
+
 @media screen and (max-width: 1350px) {
   :root {
     --padding-lr-main-add-task: 48px;
@@ -10,7 +15,7 @@
     --input-width: 420px;
   }
 
-  .addtask-toast-msg-add-task {
+  .addtask-toast-msg--add-task {
     left: 300px;
   }
 }
@@ -26,6 +31,10 @@
   }
 }
 
+/* =========================================================
+   TABLET
+   ========================================================= */
+
 @media screen and (max-width: 1024px) {
   :root {
     --input-width: 550px;
@@ -39,9 +48,20 @@
     align-items: center;
   }
 
-  .prio-btn {
-    padding: 16px 10px;
-    min-width: 120px;
+  .content-wrapper--add-task {
+    width: 100%;
+    max-width: var(--input-width);
+    margin-top: 40px;
+  }
+
+  .task-form--add-task {
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 40px;
+  }
+
+  .task-form--add-task * {
+    font-size: 16px;
   }
 
   .add-task-headline {
@@ -49,63 +69,44 @@
   }
 
   .add-task-headline--add-task {
-    padding-top: 40px;
-    padding-bottom: 10px;
-
-    position: fixed;
-    top: var(--header-height);
-    width: 100dvw;
-    background-color: var(--light-gray);
-  }
-
-  .add-task-bottom-btns-container--add-task {
-    position: fixed;
-    top: 90dvh;
-    left: calc(
-      var(--sidebar-width) + ((100dvw - var(--sidebar-width)) / 2) +
-        (var(--width-content-wrapper) / 2)
-    );
-    transform: translateX(-100%);
-  }
-
-  .content-wrapper--add-task {
-    margin-top: 80px;
-  }
-
-  .task-form--add-task {
-    max-width: 1000px;
-    margin-bottom: 100px;
-  }
-
-  .task-form * {
-    font-size: 16px;
-  }
-
-  .add-task-bottom-btns-container--add-task {
-    top: unset;
-    bottom: calc(var(--resp-navbar-height) + 24px);
-    left: 0;
-    padding-left: calc(
-      50dvw + (var(--width-content-wrapper) / 2) -
-        var(--bottom-btns-container-width)
-    );
-    padding-right: max(var(--content-limitation), var(--padding-lr-small));
-    transform: translateX(0%);
-    background-color: var(--light-gray);
+    position: static;
     width: 100%;
-  }
 
-  .bottom-btns-wrapper--add-task {
-    width: var(--bottom-btns-container-width);
-  }
+    padding-top: 24px;
+    padding-bottom: 16px;
 
-  .bottom-btn {
-    font-size: 20px;
+    background-color: var(--light-gray);
   }
 
   .add-task-inner-wrapper {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+
+    width: 100%;
+    gap: 24px;
+  }
+
+  .add-task-container {
+    width: 100%;
+  }
+
+  .add-task-container input,
+  .add-task-container textarea,
+  .add-task-container .custom-select,
+  .add-task-container .custom-select-input,
+  .add-task-container .select-wrapper {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .seperation-line {
+    display: none;
+  }
+
+  .prio-btn {
+    padding: 14px 10px;
+    min-width: 110px;
+    font-size: 16px;
   }
 
   textarea {
@@ -117,8 +118,37 @@
     margin-top: 0;
   }
 
-  .p-required {
-    position: unset;
+  .p-required,
+  .p-required--add-task {
+    position: static;
+  }
+
+  .add-task-bottom-btns-container--add-task {
+    position: static;
+
+    width: 100%;
+
+    padding: 24px 0 0;
+
+    display: flex;
+    justify-content: flex-end;
+
+    transform: none;
+
+    background-color: transparent;
+  }
+
+  .bottom-btns-wrapper--add-task {
+    width: var(--bottom-btns-container-width);
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .bottom-btn {
+    min-height: 48px;
+    font-size: 18px;
   }
 
   .subtask-list .normal-li .subtask-btns-container--ul {
@@ -126,82 +156,231 @@
   }
 
   .addtask-toast-msg--add-task {
-    top: calc(50% - (74px / 2));
-    left: unset;
-    align-self: center;
+    top: 50%;
+    left: 50%;
+
+    align-self: auto;
+
+    transform: translate(-50%, -50%);
   }
 
   .display-toast-msg-add-task {
-    transform: translate(0, 0);
+    transform: translate(-50%, -50%);
   }
 }
 
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
 @media screen and (max-width: 768px) {
   :root {
-    --input-width: 70dvw;
+    --input-width: 100%;
+    --width-content-wrapper: 100%;
   }
 
-  .prio-btn {
-    padding: 10px 10px;
-    min-width: 110px;
+  .main-content--add-task {
+    width: 100%;
+
+    padding-left: 24px;
+    padding-right: 24px;
+
+    box-sizing: border-box;
+  }
+
+  .content-wrapper--add-task {
+    width: 100%;
+    max-width: 100%;
+
+    margin-top: 16px;
   }
 
   .add-task-headline--add-task {
     padding-top: 16px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  :root {
-    --width-content-wrapper: calc(100dvw - (var(--padding-lr-small) * 2));
-    --input-width: unset;
-    --bottom-btns-container-width: unset;
   }
 
   .add-task-container {
     width: 100%;
   }
 
-  .content-wrapper {
+  .add-task-prio-btns-container {
     width: 100%;
-  }
 
-  .add-task-bottom-btns-container--add-task {
-    padding: 0 16px;
     display: flex;
-    justify-content: end;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .add-task-headline--add-task {
-    padding-top: 8px;
-    margin-bottom: 16px;
-  }
-
-  .content-wrapper {
-    margin-top: 48px;
-  }
-
-  .bottom-btn {
-    padding: 8px;
+    gap: 8px;
   }
 
   .prio-btn {
-    padding: 6px;
-    gap: 4px;
-    width: unset;
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 12px 8px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 600px) {
+  :root {
+    --width-content-wrapper: 100%;
+    --input-width: 100%;
+    --bottom-btns-container-width: 100%;
   }
 
-  #urgent-prio-svg,
-  #low-prio-svg {
+  .main-content--add-task {
+    width: 100%;
+
+    padding-left: 16px;
+    padding-right: 16px;
+
+    box-sizing: border-box;
+  }
+
+  .content-wrapper,
+  .content-wrapper--add-task {
+    width: 100%;
+    max-width: 100%;
+
+    margin-top: 8px;
+  }
+
+  .task-form--add-task {
+    width: 100%;
+    max-width: 100%;
+
+    margin-bottom: 24px;
+  }
+
+  .add-task-inner-wrapper {
+    width: 100%;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 24px;
+  }
+
+  .add-task-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .add-task-container input,
+  .add-task-container textarea,
+  .custom-select,
+  .custom-select-input,
+  .select-wrapper,
+  .trigger-input-container {
+    width: 100%;
+    max-width: 100%;
+
+    box-sizing: border-box;
+  }
+
+  .add-task-prio-btns-container {
+    display: flex;
+
+    width: 100%;
+
+    gap: 8px;
+  }
+
+  .prio-btn {
+    flex: 1;
+
+    width: auto;
+    min-width: 0;
+
+    padding: 10px 6px;
+
+    font-size: 16px;
+  }
+
+  .add-task-bottom-btns-container--add-task {
+    position: static;
+
+    width: 100%;
+
+    padding: 24px 0 0;
+
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .bottom-btns-wrapper--add-task {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 8px;
+  }
+
+  .bottom-btn {
+    min-height: 48px;
+
+    padding: 10px 12px;
+
+    font-size: 16px;
+  }
+
+  .p-required--add-task {
+    margin-top: 16px;
+
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 480px) {
+  .main-content--add-task {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .add-task-headline--add-task {
+    position: static;
+
+    width: 100%;
+
+    padding-top: 8px;
+    padding-bottom: 12px;
+
+    margin: 0 0 8px;
+  }
+
+  .content-wrapper,
+  .content-wrapper--add-task {
+    margin-top: 0;
+  }
+
+  .add-task-prio-btns-container {
+    gap: 6px;
+  }
+
+  .prio-btn {
+    padding: 10px 4px;
+
+    gap: 4px;
+
+    font-size: 15px;
+  }
+
+  #urgent-prio-svg--add-task,
+  #low-prio-svg--add-task {
     width: 18px;
     height: 12px;
   }
 
-  #medium-prio-svg {
-    height: 8px;
+  #medium-prio-svg--add-task {
     width: 16px;
+    height: 8px;
   }
 
   .urgent-active,
@@ -210,33 +389,87 @@
     font-weight: 600;
   }
 
+  .bottom-btns-wrapper--add-task {
+    width: 100%;
+
+    flex-wrap: wrap;
+  }
+
+  .bottom-btn {
+    flex: 1;
+
+    min-width: 130px;
+
+    padding: 10px 8px;
+  }
+
   .addtask-toast-msg {
-    padding: 16px 16px;
-    font-size: 18px;
-    width: 250px;
+    width: calc(100% - 32px);
+    max-width: 280px;
+
+    padding: 16px;
+
+    box-sizing: border-box;
+
+    font-size: 16px;
   }
 
   .addtask-toast-msg--dialog {
-    left: calc(50% - (250px / 2));
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Toast nicht mehr mitten über dem Formular */
+  .addtask-toast-msg--add-task {
+    position: fixed;
+
+    top: auto;
+    bottom: calc(var(--resp-navbar-height) + 16px);
+
+    left: 50%;
+
+    width: calc(100% - 32px);
+    max-width: 280px;
+
+    transform: translateX(-50%);
+
+    z-index: 1100;
+  }
+
+  .display-toast-msg-add-task {
+    transform: translateX(-50%);
+  }
+
+  /* Platz für Bottom-Navigation + Toast */
+  .task-form--add-task {
+    padding-bottom: calc(var(--resp-navbar-height) + 32px);
   }
 }
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
 
 @media screen and (max-width: 375px) {
-  .content-wrapper {
-    margin-top: 64px;
-  }
-}
-
-@media screen and (min-height: 1100px) and (min-width: 1024px) {
-  .add-task-bottom-btns-container--add-task {
-    top: 950px;
+  .main-content--add-task {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
-  .bottom-btns-wrapper--add-task {
-    margin-bottom: 24px;
+  .content-wrapper,
+  .content-wrapper--add-task {
+    margin-top: 0;
   }
 
-  .p-required--add-task {
-    top: 950px;
+  .prio-btn {
+    font-size: 14px;
+  }
+
+  .bottom-btn {
+    min-width: 120px;
+  }
+
+  .task-form--add-task {
+    padding-bottom: calc(var(--resp-navbar-height) + 40px);
   }
 }

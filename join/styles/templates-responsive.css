@@ -1,11 +1,24 @@
-@media screen and (max-width: 1280px) {
-  .sidebar-logo img {
-    width: 75px;
-  }
+/* =========================================================
+   GLOBAL TEMPLATE RESPONSIVE
+   Datei: join/styles/templates-responsive.css
+   ========================================================= */
 
+:root {
+  --resp-navbar-height: 80px;
+}
+
+/* =========================================================
+   SMALL DESKTOP
+   ========================================================= */
+
+@media screen and (max-width: 1280px) {
   :root {
     --sidebar-width: 175px;
     --header-height: 75px;
+  }
+
+  .sidebar-logo img {
+    width: 75px;
   }
 
   .nav-link {
@@ -21,35 +34,53 @@
   }
 }
 
-:root {
-  --resp-navbar-height: 80px;
-}
+/* =========================================================
+   TABLET / MOBILE NAVIGATION
+   ========================================================= */
 
 @media screen and (max-width: 1024px) {
   :root {
     --padding-lr-main: 32px;
   }
+
   .main-content {
-    min-height: calc(100dvh - var(--header-height) - var(--resp-navbar-height));
+    width: 100%;
+
+    min-height: calc(
+      100dvh -
+      var(--header-height) -
+      var(--resp-navbar-height)
+    );
+
+    margin-left: 0;
+    margin-bottom: var(--resp-navbar-height);
+
     padding: var(--padding-lr-main);
+    padding-bottom: 40px;
+
+    box-sizing: border-box;
   }
+
+  /* Bottom Navigation */
   .sidebar {
+    position: fixed;
+
     top: auto;
     left: 0;
     right: 0;
     bottom: 0;
+
     width: 100%;
     height: var(--resp-navbar-height);
+
     padding: 0;
+
     flex-direction: row;
     justify-content: center;
+
     z-index: 1000;
   }
-  .nav-login-item {
-    margin-bottom: 0;
-    margin-right: auto;
-    padding-left: 20px;
-  }
+
   .sidebar-logo,
   .sidebar-footer {
     display: none;
@@ -58,17 +89,24 @@
   .sidebar-nav {
     width: 100%;
     flex-grow: 0;
+
     z-index: 999 !important;
   }
+
   .nav-bottom-start {
     margin-top: 0;
   }
 
   .nav-list {
     height: var(--resp-navbar-height);
+
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+
     align-items: center;
+
     gap: 0;
   }
 
@@ -77,16 +115,35 @@
     height: 100%;
   }
 
+  .nav-login-item {
+    margin-bottom: 0;
+    margin-right: auto;
+
+    padding-left: 20px;
+  }
+
   .nav-link {
+    display: flex;
+
     flex-direction: column;
+
     gap: 4px;
+
     width: 100%;
     height: 100%;
+
     padding: 7px 2px;
+
+    box-sizing: border-box;
+
     font-size: 16px;
     line-height: 1.1;
+
     border-radius: 0;
+
     justify-content: center;
+    align-items: center;
+
     text-align: center;
   }
 
@@ -95,12 +152,22 @@
     height: 24px;
   }
 
-  .header-logo-mobile {
-    display: none;
+  /* Header */
+  .header {
+    left: 0;
+
+    width: 100%;
+
+    padding:
+      0
+      var(--padding-lr-main);
+
+    box-sizing: border-box;
   }
 
   .header-logo-mobile {
     display: flex;
+
     align-items: center;
   }
 
@@ -109,18 +176,6 @@
     width: auto;
   }
 
-  .header {
-    left: 0;
-    width: 100dvw;
-    padding: 0px var(--padding-lr-main);
-  }
-
-  .main-content {
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: var(--resp-navbar-height);
-    padding-bottom: 40px;
-  }
   .header-title {
     display: none;
   }
@@ -128,25 +183,105 @@
   .header-help-link {
     display: none;
   }
+
   .dropdown-content .dropdown-help-link {
     display: block;
   }
 }
 
+/* =========================================================
+   TABLET SMALL
+   ========================================================= */
+
 @media screen and (max-width: 768px) {
   :root {
     --padding-lr-main: 24px;
   }
+
+  .header {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .nav-link {
+    font-size: 16px;
+  }
 }
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media screen and (max-width: 480px) {
   :root {
     --padding-lr-main: 16px;
+    --resp-navbar-height: 72px;
+  }
+
+  .main-content {
+    margin-bottom: var(--resp-navbar-height);
+
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 32px;
+  }
+
+  .header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .header-logo-mobile img {
+    height: 42px;
+  }
+
+  .sidebar {
+    height: var(--resp-navbar-height);
+  }
+
+  .nav-list {
+    height: var(--resp-navbar-height);
+  }
+
+  .nav-link {
+    padding: 6px 2px;
+
+    font-size: 14px;
+
+    gap: 3px;
+  }
+
+  .nav-icon {
+    width: 22px;
+    height: 22px;
   }
 }
 
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
 @media screen and (max-width: 375px) {
   :root {
-    --padding-lr-main: 8px;
+    --padding-lr-main: 12px;
+  }
+
+  .main-content {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .header {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+  }
+
+  .nav-icon {
+    width: 21px;
+    height: 21px;
   }
 }

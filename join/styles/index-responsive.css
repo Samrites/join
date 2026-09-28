@@ -1,3 +1,8 @@
+/* =========================================================
+   LOGIN / INDEX RESPONSIVE
+   Datei: join/styles/index-responsive.css
+   ========================================================= */
+
 @keyframes splash-color-out {
   to {
     opacity: 0;
@@ -33,25 +38,32 @@
     --padding-lr: 24px;
   }
 
+  body {
+    overflow-x: hidden;
+  }
+
   .button-login {
+    width: 180px;
+    min-height: 48px;
     font-size: 16px;
   }
 
   .join-logo-blue {
     height: 100px;
+    width: auto;
   }
 
   .form-container {
+    position: static;
+    width: 100%;
+    max-width: var(--login-container-width);
     padding: 32px 16px;
-    position: unset;
-    transform: translate(0, 0);
-  }
-
-  .button-login {
-    width: 180px;
+    transform: none;
+    box-sizing: border-box;
   }
 
   .form-btn-section {
+    width: 100%;
     flex-direction: column;
     gap: 16px;
     border-radius: var(--border-radius-l);
@@ -117,11 +129,16 @@
   }
 
   .signup-container {
+    width: 100%;
+    max-width: 400px;
     padding: 24px;
+    box-sizing: border-box;
   }
 
+  .input-wrapper,
   .input-wrapper input {
     width: 100%;
+    box-sizing: border-box;
   }
 }
 
@@ -130,14 +147,29 @@
     --padding-lr: 16px;
   }
 
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  main {
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+    box-sizing: border-box;
+  }
+
   .form-container {
-    width: calc(100% - 24px);
+    width: 100%;
     max-width: 400px;
     padding: 24px 16px;
+    box-sizing: border-box;
   }
 
   .login-container {
+    width: 100%;
     padding: 24px 16px;
+    box-sizing: border-box;
   }
 
   .form-headline-container-login,
@@ -149,15 +181,32 @@
     margin-bottom: 20px;
   }
 
+  .input-wrapper,
+  .input-wrapper input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
   .form-btn-section {
     width: 100%;
     align-items: center;
     gap: 12px;
   }
 
+  .button-login {
+    width: 100%;
+    max-width: 220px;
+    min-height: 48px;
+  }
+
   .signup-container {
-    padding: 16px 8px;
+    width: 100%;
+    max-width: 400px;
+    padding: 16px 12px;
     gap: 26px;
+    box-sizing: border-box;
   }
 
   header {
@@ -169,7 +218,7 @@
   }
 
   .accept-privacy-container p,
-  span {
+  .accept-privacy-container span {
     text-align: center;
   }
 
@@ -178,14 +227,22 @@
   }
 
   .accept-privacy-container {
-    margin: 8px 0px;
+    margin: 8px 0;
   }
 
   .login-nav--mobile {
+    width: 100%;
     margin-bottom: 24px;
+    gap: 12px;
+  }
+
+  .login-nav--mobile .issue-request-link {
+    width: 100%;
+    text-align: center;
   }
 
   .input-fields-signup {
+    width: 100%;
     gap: 24px;
   }
 }
@@ -202,6 +259,7 @@
   main {
     width: 100%;
     padding: 0 8px;
+    box-sizing: border-box;
   }
 
   header {
@@ -211,10 +269,38 @@
   footer {
     margin: 4px 8px 12px;
   }
+
+  .form-container,
+  .login-container,
+  .signup-container {
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .button-login {
+    width: 100%;
+  }
 }
 
-/* Figma review values: desktop login 650px; sign-up frame 598x630 with 48/88px padding. */
 @media screen and (min-width: 1025px) {
-  :root { --login-container-width: 650px; --signup-container-width: 598px; }
-  .signup-container { width: 598px; min-height: 630px; padding: 48px 88px; gap: 32px; }
+  :root {
+    --login-container-width: 650px;
+    --signup-container-width: 598px;
+  }
+
+  .signup-container {
+    width: 598px;
+    min-height: 630px;
+    padding: 48px 88px;
+    gap: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-overlay,
+  .splash-overlay *,
+  .splash-logo {
+    animation: none !important;
+  }
 }

@@ -14,10 +14,6 @@
     --textarea-height: 100px;
     --input-width: 420px;
   }
-
-  .addtask-toast-msg--add-task {
-    left: 300px;
-  }
 }
 
 @media screen and (max-width: 1150px) {
@@ -70,6 +66,7 @@
 
   .add-task-headline--add-task {
     position: static;
+
     width: 100%;
 
     padding-top: 24px;
@@ -79,10 +76,11 @@
   }
 
   .add-task-inner-wrapper {
+    width: 100%;
+
     flex-direction: column;
     align-items: stretch;
 
-    width: 100%;
     gap: 24px;
   }
 
@@ -96,6 +94,7 @@
   .add-task-container .custom-select-input,
   .add-task-container .select-wrapper {
     max-width: 100%;
+
     box-sizing: border-box;
   }
 
@@ -104,13 +103,16 @@
   }
 
   .prio-btn {
-    padding: 14px 10px;
     min-width: 110px;
+
+    padding: 14px 10px;
+
     font-size: 16px;
   }
 
   textarea {
     resize: none;
+
     background-image: none;
   }
 
@@ -143,11 +145,13 @@
 
     display: flex;
     justify-content: flex-end;
+
     gap: 8px;
   }
 
   .bottom-btn {
     min-height: 48px;
+
     font-size: 18px;
   }
 
@@ -155,16 +159,34 @@
     display: flex;
   }
 
+  /*
+    Toast standardmäßig VERSTECKT.
+    Erst die display-Klasse macht ihn sichtbar.
+  */
   .addtask-toast-msg--add-task {
+    position: fixed;
+
     top: 50%;
     left: 50%;
 
-    align-self: auto;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, calc(-50% + 24px));
+
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0.2s ease;
+
+    z-index: 1100;
   }
 
   .display-toast-msg-add-task {
+    opacity: 1;
+    visibility: visible;
+
     transform: translate(-50%, -50%);
   }
 }
@@ -207,6 +229,7 @@
     width: 100%;
 
     display: flex;
+
     gap: 8px;
   }
 
@@ -416,10 +439,14 @@
 
   .addtask-toast-msg--dialog {
     left: 50%;
+
     transform: translateX(-50%);
   }
 
-  /* Toast nicht mehr mitten über dem Formular */
+  /*
+    Mobile Toast:
+    Standardmäßig unsichtbar.
+  */
   .addtask-toast-msg--add-task {
     position: fixed;
 
@@ -431,16 +458,26 @@
     width: calc(100% - 32px);
     max-width: 280px;
 
-    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translate(-50%, 20px);
 
     z-index: 1100;
   }
 
+  /*
+    Nur während JavaScript diese Klasse setzt,
+    wird der Toast sichtbar.
+  */
   .display-toast-msg-add-task {
-    transform: translateX(-50%);
+    opacity: 1;
+    visibility: visible;
+
+    transform: translate(-50%, 0);
   }
 
-  /* Platz für Bottom-Navigation + Toast */
   .task-form--add-task {
     padding-bottom: calc(var(--resp-navbar-height) + 32px);
   }

@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Join - Log in</title>
+
     <link
       rel="icon"
       href="./assets/icons/join-logo-white.svg"
@@ -24,7 +26,9 @@
     <link rel="stylesheet" href="./styles/templates.css" />
     <link rel="stylesheet" href="./styles/templates-responsive.css" />
   </head>
+
   <body>
+    <!-- Splash screen -->
     <div id="splash-overlay" class="splash-overlay">
       <div class="splash-logo">
         <img
@@ -32,6 +36,7 @@
           src="./assets/icons/join-logo-blue.svg"
           alt="Join Logo"
         />
+
         <img
           class="splash-logo-white"
           src="./assets/icons/join-logo-white.svg"
@@ -39,48 +44,95 @@
         />
       </div>
     </div>
+
+    <!-- Header -->
     <header>
       <img
         class="join-logo-blue"
         src="./assets/icons/join-logo-blue.svg"
-        alt="logo"
+        alt="Join Logo"
       />
+
       <nav class="login-nav login-nav--desktop">
-        <p class="not-a-user-text" href="#">Not a join user?</p>
-        <a href="./html/signup.html">
-          <button class="button button-blue button-signup-small">
-            Sign up
-          </button>
+        <p class="not-a-user-text">
+          Not a join user?
+        </p>
+
+        <a
+          href="./html/signup.html"
+          class="button button-blue button-signup-small"
+        >
+          Sign up
         </a>
       </nav>
     </header>
 
+    <!-- Main -->
     <main>
-      <section class="welcome-card" aria-labelledby="welcome-title">
-        <h1 id="welcome-title">Welcome</h1>
-        <div class="welcome-title-line" aria-hidden="true"></div>
-        <p class="welcome-intro">Pick the option that suits your role: create a request as a stakeholder or log in if you’re part of the team.</p>
+      <!-- Welcome screen -->
+      <section
+        class="welcome-card"
+        aria-labelledby="welcome-title"
+      >
+        <h1 id="welcome-title">
+          Welcome
+        </h1>
+
+        <div
+          class="welcome-title-line"
+          aria-hidden="true"
+        ></div>
+
+        <p class="welcome-intro">
+          Pick the option that suits your role:
+          create a request as a stakeholder or log in
+          if you’re part of the team.
+        </p>
+
         <div class="welcome-options">
           <div class="welcome-option">
-            <p>Are you a stakeholder?</p>
-            <a class="welcome-button welcome-button-primary" href="./html/stakeholder.html">Create request</a>
+            <p>
+              Are you a stakeholder?
+            </p>
+
+            <a
+              class="welcome-button welcome-button-primary"
+              href="./html/stakeholder.html"
+            >
+              Create request
+            </a>
           </div>
+
           <div class="welcome-option">
-            <p>Are you a team member?</p>
-            <a class="welcome-button welcome-button-secondary" href="#login">Member log in</a>
+            <p>
+              Are you a team member?
+            </p>
+
+            <a
+              class="welcome-button welcome-button-secondary"
+              href="#login"
+            >
+              Member log in
+            </a>
           </div>
         </div>
       </section>
 
+      <!-- Login form -->
       <form
         onsubmit="handleLogin(event)"
         class="form-container login-container"
         id="login-form"
         novalidate
       >
-        <div class="form-headline-container form-headline-container-login">
+        <div
+          class="form-headline-container form-headline-container-login"
+        >
           <div class="headline-wrapper">
-            <h1>Log In</h1>
+            <h1>
+              Log In
+            </h1>
+
             <div class="h1-underline"></div>
           </div>
         </div>
@@ -91,12 +143,13 @@
           data-message="Wrong email or password"
         >
           <section class="input-fields input-fields-login">
+            <!-- Email -->
             <div
               class="input-wrapper input-wrapper-login-email required"
               data-message="Please enter your email"
             >
               <input
-                aria-label="email adress"
+                aria-label="Email address"
                 placeholder="Email"
                 class="form-input form-input-email"
                 id="login-email"
@@ -108,6 +161,7 @@
               />
             </div>
 
+            <!-- Password -->
             <div
               class="input-wrapper input-wrapper-login-password required"
               data-message="Please enter your password"
@@ -116,7 +170,7 @@
                 <input
                   oninput="checkInputValidityOnInputLogin('password')"
                   onblur="checkInputValidityOnBlurLogin('password')"
-                  aria-label="password"
+                  aria-label="Password"
                   placeholder="Password"
                   class="form-input form-input-password"
                   id="login-password"
@@ -125,13 +179,17 @@
                   type="password"
                   required
                 />
+
                 <button
                   type="button"
                   class="password-toggle"
                   id="toggle-login-password"
                   aria-label="Show password"
                   onclick="
-                    togglePassword('login-password', 'toggle-login-password')
+                    togglePassword(
+                      'login-password',
+                      'toggle-login-password'
+                    )
                   "
                 ></button>
               </div>
@@ -139,6 +197,7 @@
           </section>
         </div>
 
+        <!-- Login buttons -->
         <section class="form-btn-section">
           <button
             type="submit"
@@ -147,6 +206,7 @@
           >
             Log in
           </button>
+
           <button
             type="button"
             class="button button-login button-white"
@@ -158,19 +218,29 @@
       </form>
     </main>
 
+    <!-- Footer -->
     <footer>
       <nav class="login-nav login-nav--mobile">
-        <p class="not-a-user-text" href="#">Not a join user?</p>
-        <a href="./html/signup.html">
-          <button class="button button-blue button-signup-small">
-            Sign up
-          </button>
+        <p class="not-a-user-text">
+          Not a join user?
+        </p>
+
+        <a
+          href="./html/signup.html"
+          class="button button-blue button-signup-small"
+        >
+          Sign up
         </a>
       </nav>
 
       <nav class="footer-nav">
-        <a href="./html/privacy-policy-external.html">Privacy Policy</a>
-        <a href="./html/legal-notice-external.html">Legal Notice</a>
+        <a href="./html/privacy-policy-external.html">
+          Privacy Policy
+        </a>
+
+        <a href="./html/legal-notice-external.html">
+          Legal Notice
+        </a>
       </nav>
     </footer>
   </body>

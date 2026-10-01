@@ -1,6 +1,10 @@
 /* =========================================================
    LOGIN / INDEX RESPONSIVE
-   Datei: join/styles/index-responsive.css
+   Mentor feedback correction:
+   - login stays centered
+   - no downward sliding
+   - small heights remain scrollable
+   - mobile footer/nav do not push form out of position
    ========================================================= */
 
 @keyframes splash-color-out {
@@ -19,16 +23,26 @@
   to {
     top: 24px;
     left: 24px;
+
     transform: translate(0, 0);
+
     height: 64px;
   }
 }
+
+/* =========================================================
+   <= 1280
+   ========================================================= */
 
 @media screen and (max-width: 1280px) {
   :root {
     --padding-lr: 64px;
   }
 }
+
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media screen and (max-width: 1024px) {
   :root {
@@ -39,33 +53,79 @@
   }
 
   body {
+    width: 100%;
+
     overflow-x: hidden;
+  }
+
+  header {
+    padding-left: var(--padding-lr);
+    padding-right: var(--padding-lr);
+  }
+
+  /*
+    Main remains the positioning container.
+    This prevents the login card from sliding down.
+  */
+  main {
+    flex: 1 1 auto;
+
+    width: 100%;
+
+    min-height: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px var(--padding-lr);
+
+    box-sizing: border-box;
+  }
+
+  .form-container {
+    position: relative;
+
+    width: 100%;
+
+    max-width: var(--login-container-width);
+
+    margin: 0;
+
+    padding: 32px 24px;
+
+    transform: none;
+
+    box-sizing: border-box;
+  }
+
+  .login-container {
+    width: 100%;
   }
 
   .button-login {
     width: 180px;
+
     min-height: 48px;
+
     font-size: 16px;
   }
 
   .join-logo-blue {
-    height: 100px;
     width: auto;
-  }
-
-  .form-container {
-    position: static;
-    width: 100%;
-    max-width: var(--login-container-width);
-    padding: 32px 16px;
-    transform: none;
-    box-sizing: border-box;
+    height: 100px;
   }
 
   .form-btn-section {
     width: 100%;
+
     flex-direction: column;
+
+    align-items: center;
+
     gap: 16px;
+
     border-radius: var(--border-radius-l);
   }
 
@@ -79,16 +139,27 @@
 
   .login-nav--mobile {
     display: flex;
+
     width: 100%;
+
     flex-wrap: wrap;
+
     justify-content: center;
+    align-items: center;
+
     gap: 12px 20px;
-    margin-bottom: 48px;
+
+    margin-bottom: 24px;
   }
 
   .login-nav--mobile .issue-request-link {
     flex-basis: 100%;
+
     text-align: center;
+  }
+
+  footer {
+    padding: 16px var(--padding-lr) 24px;
   }
 
   .splash-overlay {
@@ -109,38 +180,65 @@
 
   .splash-overlay.splash-active .splash-logo-white {
     animation: splash-color-out 0.4s ease-out forwards;
+
     animation-delay: 0.9s;
   }
 
   .splash-overlay.splash-active .splash-logo-blue {
     animation: splash-color-in 0.4s ease-out forwards;
+
     animation-delay: 0.9s;
   }
 
   .splash-overlay.splash-active .splash-logo {
     animation: splash-fly-mobile 0.8s ease-in-out forwards;
+
     animation-delay: 0.9s;
   }
 }
 
+/* =========================================================
+   <= 768
+   ========================================================= */
+
 @media screen and (max-width: 768px) {
+  header {
+    padding-top: 20px;
+    padding-bottom: 8px;
+  }
+
   .join-logo-blue {
     height: 64px;
   }
 
+  main {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
   .signup-container {
     width: 100%;
+
     max-width: 400px;
+
     padding: 24px;
+
     box-sizing: border-box;
   }
 
   .input-wrapper,
-  .input-wrapper input {
+  .input-wrapper input,
+  .input-with-icon,
+  .input-with-icon input {
     width: 100%;
+
     box-sizing: border-box;
   }
 }
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media screen and (max-width: 480px) {
   :root {
@@ -149,27 +247,49 @@
 
   body {
     width: 100%;
+
+    min-height: 100dvh;
+
     overflow-x: hidden;
   }
 
+  header {
+    padding: 16px 16px 8px;
+  }
+
   main {
+    flex: 1 1 auto;
+
     width: 100%;
-    padding-left: 12px;
-    padding-right: 12px;
+
+    min-height: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px;
+
     box-sizing: border-box;
   }
 
   .form-container {
     width: 100%;
+
     max-width: 400px;
+
+    margin: 0;
+
     padding: 24px 16px;
+
     box-sizing: border-box;
   }
 
   .login-container {
     width: 100%;
+
     padding: 24px 16px;
-    box-sizing: border-box;
   }
 
   .form-headline-container-login,
@@ -182,39 +302,50 @@
   }
 
   .input-wrapper,
-  .input-wrapper input {
+  .input-wrapper input,
+  .input-with-icon,
+  .input-with-icon input {
     width: 100%;
+
     max-width: 100%;
+
     box-sizing: border-box;
+
     font-size: 16px;
   }
 
   .form-btn-section {
     width: 100%;
+
     align-items: center;
+
     gap: 12px;
   }
 
   .button-login {
     width: 100%;
+
     max-width: 220px;
+
     min-height: 48px;
   }
 
   .signup-container {
     width: 100%;
+
     max-width: 400px;
+
     padding: 16px 12px;
+
     gap: 26px;
+
     box-sizing: border-box;
   }
 
-  header {
-    padding: 16px var(--padding-lr) 8px var(--padding-lr);
-  }
-
   footer {
-    margin: 8px var(--padding-lr) 16px var(--padding-lr);
+    margin: 0;
+
+    padding: 8px 16px 16px;
   }
 
   .accept-privacy-container p,
@@ -232,48 +363,51 @@
 
   .login-nav--mobile {
     width: 100%;
-    margin-bottom: 24px;
+
+    margin-bottom: 16px;
+
     gap: 12px;
   }
 
   .login-nav--mobile .issue-request-link {
     width: 100%;
+
     text-align: center;
   }
 
   .input-fields-signup {
     width: 100%;
+
+    gap: 24px;
+  }
+
+  .footer-nav {
     gap: 24px;
   }
 }
+
+/* =========================================================
+   375
+   ========================================================= */
 
 @media screen and (max-width: 375px) {
   :root {
     --padding-lr: 8px;
   }
 
-  body {
-    gap: 8px;
-  }
-
-  main {
-    width: 100%;
-    padding: 0 8px;
-    box-sizing: border-box;
-  }
-
   header {
     padding: 12px 12px 4px;
   }
 
-  footer {
-    margin: 4px 8px 12px;
+  main {
+    padding: 8px;
   }
 
   .form-container,
   .login-container,
   .signup-container {
     width: 100%;
+
     padding-left: 12px;
     padding-right: 12px;
   }
@@ -281,7 +415,71 @@
   .button-login {
     width: 100%;
   }
+
+  footer {
+    padding: 6px 8px 12px;
+  }
 }
+
+/* =========================================================
+   SHORT SCREENS
+   Very important for mentor's "Abrutschen nach unten".
+   When height is small, allow page scrolling instead of
+   pushing/clipping the login card.
+   ========================================================= */
+
+@media screen and (max-height: 700px) {
+  body {
+    min-height: 100dvh;
+  }
+
+  header {
+    padding-top: 12px;
+    padding-bottom: 4px;
+  }
+
+  main {
+    align-items: flex-start;
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .form-container {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  footer {
+    padding-top: 8px;
+    padding-bottom: 12px;
+  }
+}
+
+/* Extremely short window:
+   scrolling is safer than clipping content. */
+@media screen and (max-height: 600px) {
+  body {
+    overflow-y: auto;
+  }
+
+  main {
+    flex: 0 0 auto;
+
+    align-items: flex-start;
+
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .form-container {
+    margin: 0 auto;
+  }
+}
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
 
 @media screen and (min-width: 1025px) {
   :root {
@@ -291,11 +489,18 @@
 
   .signup-container {
     width: 598px;
+
     min-height: 630px;
+
     padding: 48px 88px;
+
     gap: 32px;
   }
 }
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   .splash-overlay,

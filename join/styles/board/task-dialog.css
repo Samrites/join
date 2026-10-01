@@ -16,27 +16,29 @@
 .task-dialog {
   position: fixed;
 
+  top: 50%;
+  left: 50%;
+
+  width: 90dvw;
+  max-width: 525px;
+
+  height: fit-content;
+  max-height: 85dvh;
+
+  box-sizing: border-box;
+
   border: none;
+  border-radius: 30px;
+
   background-color: white;
   color: black;
 
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
 
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.16);
 
   z-index: 999;
-
   overflow: hidden;
-
-  max-width: 525px;
-  width: 90dvw;
-
-  height: fit-content;
-  max-height: 85dvh;
-
-  border-radius: 30px;
 
   transition:
     display 0.15s allow-discrete,
@@ -49,13 +51,13 @@
   display: flex;
   flex-direction: column;
 
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  max-height: 85dvh;
   width: 100%;
+  max-height: 85dvh;
 
   box-sizing: border-box;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 body:has(.example-dialog[open]),
@@ -104,6 +106,7 @@ body:has(.add-task-dialog[open]) {
     var(--task-dialog-padding-tb)
     var(--task-dialog-padding-lr);
 
+  min-width: 0;
   box-sizing: border-box;
 }
 
@@ -124,6 +127,10 @@ body:has(.add-task-dialog[open]) {
   margin-top: 8px;
 }
 
+/* =========================================================
+   PRIORITY
+   ========================================================= */
+
 .dialog-prio-row {
   display: flex;
   align-items: center;
@@ -137,6 +144,10 @@ body:has(.add-task-dialog[open]) {
 
   object-fit: contain;
 }
+
+/* =========================================================
+   SUBTASKS
+   ========================================================= */
 
 .dialog-subtasks-section {
   margin-top: 24px;
@@ -153,14 +164,13 @@ body:has(.add-task-dialog[open]) {
   display: flex;
   align-items: center;
 
+  min-width: 0;
   gap: 12px;
 
   margin-top: 8px;
 
   cursor: pointer;
   user-select: none;
-
-  min-width: 0;
 }
 
 .dialog-subtask-checkbox {
@@ -184,6 +194,10 @@ body:has(.add-task-dialog[open]) {
 }
 
 .dialog-subtask-row label {
+  flex: 1 1 auto;
+
+  min-width: 0;
+
   font-size: 16px;
 
   cursor: pointer;
@@ -215,6 +229,7 @@ body:has(.add-task-dialog[open]) {
 .content-wrapper-task-dialog--edit .custom-select {
   width: 100%;
   max-width: 100%;
+
   box-sizing: border-box;
 }
 
@@ -239,9 +254,9 @@ body:has(.add-task-dialog[open]) {
   display: flex;
   justify-content: flex-end;
 
-  padding-top: var(--task-dialog-edit-padding-tb);
-
   width: 100%;
+
+  padding-top: var(--task-dialog-edit-padding-tb);
 
   background-color: white;
 
@@ -271,18 +286,18 @@ body:has(.add-task-dialog[open]) {
   position: sticky;
   bottom: 0;
 
+  display: flex;
+  justify-content: flex-end;
+
+  width: 100%;
+
   padding:
     8px
     0
     var(--task-dialog-edit-padding-tb)
     0;
 
-  display: flex;
-  justify-content: flex-end;
-
   background-color: white;
-
-  width: 100%;
 }
 
 /* =========================================================
@@ -348,7 +363,7 @@ body:has(.add-task-dialog[open]) {
 }
 
 /* =========================================================
-   TABLET
+   TABLET - 768 PX
    ========================================================= */
 
 @media screen and (max-width: 768px) {
@@ -360,6 +375,7 @@ body:has(.add-task-dialog[open]) {
 
   .task-dialog {
     width: calc(100dvw - 32px);
+    max-width: calc(100dvw - 32px);
     max-height: 90dvh;
   }
 
@@ -367,13 +383,62 @@ body:has(.add-task-dialog[open]) {
     max-height: 90dvh;
   }
 
+  .content-wrapper-task-dialog--detailed {
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
   .dialog-contact-row {
     padding-left: 8px;
+  }
+
+  /* Subtasks must fit without overflowing */
+
+  .dialog-subtask-row {
+    display: flex;
+    align-items: center;
+
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .dialog-subtask-row label {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    overflow-wrap: anywhere;
+  }
+
+  /* Mentor feedback:
+     Keep Delete and Edit next to each other */
+
+  .dialog-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    gap: 16px;
+  }
+
+  .delete-task-btn,
+  .edit-task-btn {
+    flex: 0 0 auto;
+
+    min-width: max-content;
+    white-space: nowrap;
   }
 }
 
 /* =========================================================
-   MOBILE
+   MOBILE - 480 PX
    ========================================================= */
 
 @media screen and (max-width: 480px) {
@@ -384,12 +449,11 @@ body:has(.add-task-dialog[open]) {
   }
 
   .task-dialog {
-    border-radius: 16px;
-
-    max-width: unset;
+    width: calc(100dvw - 16px);
+    max-width: calc(100dvw - 16px);
     max-height: 95dvh;
 
-    width: calc(100dvw - 16px);
+    border-radius: 16px;
   }
 
   .content-wrapper-task-dialog {
@@ -414,6 +478,23 @@ body:has(.add-task-dialog[open]) {
   .dialog-contacts-container,
   .dialog-subtasks-container {
     max-height: 130px;
+  }
+
+  /* Delete and Edit stay horizontal */
+
+  .dialog-footer {
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+  }
+
+  .delete-task-btn,
+  .edit-task-btn {
+    min-height: 44px;
+    white-space: nowrap;
   }
 
   .edit-task-closing-btn-wrapper {

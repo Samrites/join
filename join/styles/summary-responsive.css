@@ -1,19 +1,9 @@
 /* =========================================================
-   SUMMARY RESPONSIVE
-   Datei: join/styles/summary/summary-responsive.css
-
-   Feedback:
-   - ca. 1200 x 800 sauber darstellen
-   - 360 px sauber darstellen
-   - früher umbrechen
-   - nichts darf aus dem Viewport laufen
-   ========================================================= */
-
-/* =========================================================
    NOTEBOOK / SMALL DESKTOP
    ========================================================= */
 
 @media screen and (max-width: 1440px) {
+
   .summary-page {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -71,11 +61,13 @@
   }
 }
 
+
 /* =========================================================
    1200 PX NOTEBOOK
    ========================================================= */
 
 @media screen and (max-width: 1200px) {
+
   .summary-page {
     width: 100%;
     padding-top: 32px;
@@ -154,11 +146,13 @@
   }
 }
 
+
 /* =========================================================
    TABLET
    ========================================================= */
 
 @media screen and (max-width: 1024px) {
+
   .main-content {
     display: flex;
     align-items: flex-start;
@@ -275,11 +269,13 @@
   }
 }
 
+
 /* =========================================================
    SMALL TABLET
    ========================================================= */
 
 @media screen and (max-width: 768px) {
+
   .summary-page {
     width: 100%;
   }
@@ -345,15 +341,199 @@
   }
 }
 
+
 /* =========================================================
-   MOBILE
+   MOBILE / 600 PX
+   Urgent und Deadline bekommen genügend Platz.
+   ========================================================= */
+
+@media screen and (max-width: 600px) {
+
+  .summary-page,
+  .summary-body,
+  .summary-cards {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .summary-cards {
+    max-width: none;
+  }
+
+  .cards-row {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .metric-card {
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  /* Urgent and Email requests no longer compete for space */
+
+  .cards-row-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    width: 100%;
+    gap: 12px;
+  }
+
+  /* Combined Urgent / Deadline card */
+
+  .cards-row-middle .metric-card-wide {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      2px
+      minmax(0, 1fr);
+
+    align-items: center;
+
+    flex: none;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 110px;
+
+    padding: 18px 14px;
+    gap: 12px;
+
+    border-radius: 20px;
+
+    background-color: #2a3647;
+    color: #ffffff;
+
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+
+  /* Urgent left side */
+
+  .metric-card-wide .card-urgent-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    gap: 10px;
+  }
+
+  .metric-card-wide .card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-width: 0;
+    text-align: center;
+  }
+
+  .metric-card-wide .card-count {
+    color: #ffffff;
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .metric-card-wide .card-label {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .metric-card-wide .card-icon-urgent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 44px;
+    height: 44px;
+
+    background-color: #ff3d00;
+    border-radius: 50%;
+  }
+
+  /* Vertical divider */
+
+  .metric-card-wide .card-divider {
+    display: block;
+
+    width: 2px;
+    height: 60px;
+
+    background-color: #d1d1d1;
+  }
+
+  /* Upcoming Deadline right side */
+
+  .metric-card-wide .card-deadline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    flex: initial;
+
+    width: 100%;
+    min-width: 0;
+
+    text-align: left;
+  }
+
+  .metric-card-wide .deadline-date {
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .metric-card-wide .deadline-label {
+    color: #ffffff;
+
+    font-size: 14px;
+    line-height: 1.3;
+
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+
+  /* Email requests: separate full-width card */
+
+  .cards-row-middle .metric-card-ai {
+    flex: none;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 75px;
+
+    box-sizing: border-box;
+  }
+
+  .cards-row-middle .metric-card-wide:hover {
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   MOBILE / 480 PX
    ========================================================= */
 
 @media screen and (max-width: 480px) {
+
   .summary-page {
     width: 100%;
     padding: 8px 0 24px;
-    overflow-x: hidden;
   }
 
   .summary-title {
@@ -382,23 +562,33 @@
   }
 
   .cards-row {
-    display: flex;
     width: 100%;
     gap: 8px;
     min-width: 0;
   }
 
   .metric-card {
-    flex: 1 1 0;
     min-width: 0;
     border-radius: 16px;
+  }
+
+  /* Top two metric cards */
+
+  .cards-row-top {
+    display: flex;
+  }
+
+  .cards-row-top .metric-card {
+    flex: 1 1 0;
   }
 
   .metric-card-icon {
     flex-direction: column;
     justify-content: center;
+
     padding: 12px 8px;
     gap: 8px;
+
     text-align: center;
   }
 
@@ -428,38 +618,45 @@
     height: 20px;
   }
 
-  .metric-card-wide {
+  /* Middle section stays vertical,
+     but the Urgent card stays horizontal inside */
+
+  .cards-row-middle {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cards-row-middle .metric-card-wide {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      2px
+      minmax(0, 1fr);
 
     width: 100%;
+    min-height: 104px;
 
     padding: 14px 12px;
     gap: 10px;
   }
 
-  .card-urgent-side {
-    min-width: 0;
-    gap: 8px;
-  }
-
-  .card-divider {
+  .metric-card-wide .card-divider {
+    width: 2px;
     height: 54px;
   }
 
-  .card-deadline {
+  /* Bottom three cards */
+
+  .cards-row-bottom {
+    display: flex;
+    gap: 8px;
+  }
+
+  .cards-row-bottom .metric-card {
+    flex: 1 1 0;
     min-width: 0;
-  }
-
-  .deadline-date {
-    font-size: 16px;
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-
-  .deadline-label {
-    font-size: 16px;
-    line-height: 1.2;
   }
 
   .metric-card-bottom {
@@ -477,11 +674,13 @@
   }
 }
 
+
 /* =========================================================
    375 / 360 PX
    ========================================================= */
 
 @media screen and (max-width: 375px) {
+
   .summary-title {
     margin-bottom: 20px;
   }
@@ -516,22 +715,39 @@
     height: 36px;
   }
 
-  .metric-card-wide {
+  .cards-row-middle .metric-card-wide {
     padding: 12px 8px;
     gap: 8px;
   }
 
-  .card-urgent-side {
+  .metric-card-wide .card-urgent-side {
     gap: 6px;
   }
 
-  .card-divider {
-    height: 48px;
+  .metric-card-wide .card-icon-urgent {
+    width: 36px;
+    height: 36px;
   }
 
-  .deadline-date,
-  .deadline-label {
+  .metric-card-wide .card-count {
+    font-size: 25px;
+  }
+
+  .metric-card-wide .card-label {
+    font-size: 14px;
+  }
+
+  .metric-card-wide .card-divider {
+    width: 2px;
+    height: 50px;
+  }
+
+  .metric-card-wide .deadline-date {
     font-size: 16px;
+  }
+
+  .metric-card-wide .deadline-label {
+    font-size: 14px;
   }
 
   .summary-greeting h2,
@@ -540,11 +756,13 @@
   }
 }
 
+
 /* =========================================================
-   320 PX
+   EXTRA SMALL MOBILE / 320 PX / 318 PX
    ========================================================= */
 
 @media screen and (max-width: 320px) {
+
   .summary-title {
     gap: 8px;
   }
@@ -586,28 +804,91 @@
     height: 16px;
   }
 
-  .metric-card-wide {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    text-align: center;
-  }
+  /* IMPORTANT:
+     Never switch the Urgent card to one column.
+     Both sides must remain next to each other.
+  */
 
-  .card-urgent-side {
-    justify-content: center;
-  }
+  .cards-row-middle .metric-card-wide {
+    display: grid;
 
-  .card-divider {
-    width: 100%;
-    height: 2px;
-  }
+    grid-template-columns:
+      minmax(0, 1fr)
+      2px
+      minmax(0, 1fr);
 
-  .card-deadline {
     align-items: center;
+
+    width: 100%;
+    min-height: 100px;
+
+    padding: 12px 8px;
+    gap: 6px;
+
+    text-align: left;
+
+    background-color: #2a3647;
+    border-radius: 16px;
   }
 
-  .deadline-date,
-  .deadline-label {
-    font-size: 16px;
+  .metric-card-wide .card-urgent-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    gap: 5px;
+  }
+
+  .metric-card-wide .card-icon-urgent {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+  .metric-card-wide .card-icon-urgent svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .metric-card-wide .card-count {
+    font-size: 22px;
+  }
+
+  .metric-card-wide .card-label {
+    font-size: 13px;
+  }
+
+  /* Keep divider VERTICAL */
+
+  .metric-card-wide .card-divider {
+    display: block;
+
+    width: 2px;
+    height: 48px;
+
+    background-color: #d1d1d1;
+  }
+
+  .metric-card-wide .card-deadline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    min-width: 0;
+    text-align: left;
+  }
+
+  .metric-card-wide .deadline-date {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .metric-card-wide .deadline-label {
+    font-size: 12px;
+    line-height: 1.2;
   }
 
   .summary-greeting h2,
